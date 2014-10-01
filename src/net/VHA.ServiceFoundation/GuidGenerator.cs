@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Net;
 using System.Net.NetworkInformation;
 
-namespace VHA.ServiceFoundation
+namespace ServiceBlock.Foundation
 {
     // guid version types
     public enum GuidVersion

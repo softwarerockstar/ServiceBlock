@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 
-namespace VHA.ServiceFoundation
+namespace ServiceBlock.Foundation
 {
     [ExcludeFromCodeCoverage]
     public class PagingList<T> : List<T>

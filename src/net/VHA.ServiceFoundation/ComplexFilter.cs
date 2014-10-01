@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Web.Script.Serialization;
 
-namespace VHA.ServiceFoundation
+namespace ServiceBlock.Foundation
 {
     [DataContract]
     public class ComplexFilter

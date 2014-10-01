@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace VHA.ServiceFoundation.Orchestrations
+namespace ServiceBlock.Foundation.Orchestrations
 {
     public class OrchestrationExecutionInfo
     {

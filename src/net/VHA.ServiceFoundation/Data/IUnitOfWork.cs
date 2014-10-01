@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VHA.ServiceFoundation.Data
+namespace ServiceBlock.Foundation.Data
 {
     public interface IUnitOfWork
     {

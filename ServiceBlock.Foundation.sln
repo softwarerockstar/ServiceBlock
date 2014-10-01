@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VHA.ServiceFoundation", "src\net\VHA.ServiceFoundation\VHA.ServiceFoundation.csproj", "{D687C7B8-E0D7-40D8-8229-07428BAC123E}"
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBlock.Foundation", "src\net\VHA.ServiceFoundation\ServiceBlock.Foundation.csproj", "{D687C7B8-E0D7-40D8-8229-07428BAC123E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VHA.ServiceFoundation.DataProviders", "src\net\VHA.ServiceFoundation.DataProviders\VHA.ServiceFoundation.DataProviders.csproj", "{7EC31F45-3123-44CE-9699-C44FC811E373}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBlock.Foundation.DataProviders", "src\net\VHA.ServiceFoundation.DataProviders\ServiceBlock.Foundation.DataProviders.csproj", "{7EC31F45-3123-44CE-9699-C44FC811E373}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E729231F-2ACB-43A8-BC44-F7D2502A8F51}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,18 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E72923
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs2012.corp.vha.com/tfs/pmo
-		SccProjectUniqueName0 = src\\net\\VHA.ServiceFoundation\\VHA.ServiceFoundation.csproj
-		SccProjectName0 = src/net/VHA.ServiceFoundation
-		SccLocalPath0 = src\\net\\VHA.ServiceFoundation
-		SccProjectUniqueName1 = src\\net\\VHA.ServiceFoundation.DataProviders\\VHA.ServiceFoundation.DataProviders.csproj
-		SccProjectName1 = src/net/VHA.ServiceFoundation.DataProviders
-		SccLocalPath1 = src\\net\\VHA.ServiceFoundation.DataProviders
-		SccLocalPath2 = .
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

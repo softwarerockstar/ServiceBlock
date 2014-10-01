@@ -6,7 +6,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.IO;
 
-namespace VHA.ServiceFoundation.Composition
+namespace ServiceBlock.Foundation.Composition
 {
     public class CompositionManager
     {

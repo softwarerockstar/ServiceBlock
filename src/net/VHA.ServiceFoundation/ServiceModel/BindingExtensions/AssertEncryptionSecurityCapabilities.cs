@@ -5,7 +5,7 @@ using System.Text;
 using System.ServiceModel.Channels;
 using System.Net.Security;
 
-namespace VHA.ServiceFoundation.ServiceModel.BindingExtensions
+namespace ServiceBlock.Foundation.ServiceModel.BindingExtensions
 {
     public class AssertEncryptionSecurityCapabilities: ISecurityCapabilities
     {

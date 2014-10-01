@@ -7,7 +7,7 @@ using System.ServiceModel;
 using System.Configuration;
 using System.Xml;
 
-namespace VHA.ServiceFoundation.ServiceModel.BindingExtensions
+namespace ServiceBlock.Foundation.ServiceModel.BindingExtensions
 {
     public class AssertEncryptionHttpBinding : CustomBinding, IBindingRuntimePreferences
     {

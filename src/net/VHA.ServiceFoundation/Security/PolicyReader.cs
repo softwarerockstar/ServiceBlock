@@ -19,7 +19,7 @@ using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Xml;
 
-namespace VHA.ServiceFoundation.Security
+namespace ServiceBlock.Foundation.Security
 {
     public class PolicyReader
     {

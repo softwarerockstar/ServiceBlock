@@ -1,7 +1,7 @@
 ﻿ using System;
 using System.Diagnostics;
 
-namespace VHA.ServiceFoundation.Diagnostics
+namespace ServiceBlock.Foundation.Diagnostics
 {
     public class ActivityTracerScope : IDisposable
     {

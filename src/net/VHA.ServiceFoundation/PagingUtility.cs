@@ -6,7 +6,7 @@ using System.Data.Objects;
 using System.Data.Entity;
 using System.Diagnostics.CodeAnalysis;
 
-namespace VHA.ServiceFoundation
+namespace ServiceBlock.Foundation
 {
     [ExcludeFromCodeCoverage]
     public static class PagingUtility

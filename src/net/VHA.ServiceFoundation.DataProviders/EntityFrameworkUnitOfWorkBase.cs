@@ -7,10 +7,10 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using VHA.ServiceFoundation;
-using VHA.ServiceFoundation.Data;
+using ServiceBlock.Foundation;
+using ServiceBlock.Foundation.Data;
 
-namespace VHA.ServiceFoundation.DataProviders
+namespace ServiceBlock.Foundation.DataProviders
 {
     public abstract class EntityFrameworkUnitOfWorkBase : DbContext, IUnitOfWorkEx
     {

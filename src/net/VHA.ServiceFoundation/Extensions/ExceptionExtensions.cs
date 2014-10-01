@@ -8,9 +8,9 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using VHA.ServiceFoundation.ExceptionManagement;
+using ServiceBlock.Foundation.ExceptionManagement;
 
-namespace VHA.ServiceFoundation
+namespace ServiceBlock.Foundation
 {
     public static class ExceptionExtensions
     {

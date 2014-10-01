@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VHA.ServiceFoundation.ServiceModel
+namespace ServiceBlock.Foundation.ServiceModel
 {
     [DataContract]
     public class RequestBase

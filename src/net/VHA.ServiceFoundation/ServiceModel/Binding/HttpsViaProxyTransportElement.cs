@@ -9,7 +9,7 @@ using System.ServiceModel.Configuration;
 using System.ServiceModel.Channels;
 #endregion
 
-namespace VHA.ServiceFoundation.ServiceModel.Binding
+namespace ServiceBlock.Foundation.ServiceModel.Binding
 {
     /// <summary>
     /// HttpsViaProxyTransportElement

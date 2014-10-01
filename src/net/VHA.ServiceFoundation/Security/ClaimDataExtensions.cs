@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Security;
 
-namespace VHA.ServiceFoundation.Security
+namespace ServiceBlock.Foundation.Security
 {
     public static class ClaimDataExtensions
     {

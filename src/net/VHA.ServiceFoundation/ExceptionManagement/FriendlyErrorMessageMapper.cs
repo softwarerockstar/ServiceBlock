@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace VHA.ServiceFoundation.ExceptionManagement
+namespace ServiceBlock.Foundation.ExceptionManagement
 {
     //TODO: Test this!!
     [ExcludeFromCodeCoverage]

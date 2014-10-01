@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>VHA.ServiceFoundation</id>
+        <id>ServiceBlock.Foundation</id>
         <version>2.0.17</version>
         <authors>MHAROON</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -24,6 +24,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\VHA.ServiceFoundation.dll" target="lib\net45\VHA.ServiceFoundation.dll" />
+        <file src="bin\Release\ServiceBlock.Foundation.dll" target="lib\net45\ServiceBlock.Foundation.dll" />
     </files>
 </package>

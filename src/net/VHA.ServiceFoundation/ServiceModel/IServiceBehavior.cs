@@ -8,7 +8,7 @@ using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VHA.ServiceFoundation.ServiceModel
+namespace ServiceBlock.Foundation.ServiceModel
 {
     public interface IServiceBehavior
     {

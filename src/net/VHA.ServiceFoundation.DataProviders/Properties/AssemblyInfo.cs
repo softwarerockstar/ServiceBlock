@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VHA.ServiceFoundation.DataProviders")]
+[assembly: AssemblyTitle("ServiceBlock.Foundation.DataProviders")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("VHA/Novation/Provista")]
-[assembly: AssemblyProduct("VHA.ServiceFoundation.DataProviders")]
-[assembly: AssemblyCopyright("Copyright © VHA/Novation/Provista 2013")]
+[assembly: AssemblyCompany("ServiceBlock")]
+[assembly: AssemblyProduct("ServiceBlock.Foundation.DataProviders")]
+[assembly: AssemblyCopyright("Copyright © ServiceBlock.Foundation, 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("38cf80cc-1981-4252-91a3-f87db340e816")]
+[assembly: Guid("df784337-7c6f-4e10-8af6-da2780f8e008")]
 
 // Version information for an assembly consists of the following four values:
 //

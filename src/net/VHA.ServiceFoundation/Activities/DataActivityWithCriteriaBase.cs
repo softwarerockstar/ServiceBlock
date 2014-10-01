@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VHA.ServiceFoundation.Activities
+namespace ServiceBlock.Foundation.Activities
 {
     [ExcludeFromCodeCoverage]
     public abstract class DataActivityWithCriteriaBase<T> : DataActivityBase<PagingList<T>>

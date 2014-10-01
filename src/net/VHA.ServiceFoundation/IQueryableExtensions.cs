@@ -7,7 +7,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Diagnostics.CodeAnalysis;
 
-namespace VHA.ServiceFoundation
+namespace ServiceBlock.Foundation
 {
     [ExcludeFromCodeCoverage]
     public static class IQueryableExtensions

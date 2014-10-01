@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Diagnostics.CodeAnalysis;
 
-namespace VHA.ServiceFoundation
+namespace ServiceBlock.Foundation
 {    
     public enum StringFilterOperator
     {

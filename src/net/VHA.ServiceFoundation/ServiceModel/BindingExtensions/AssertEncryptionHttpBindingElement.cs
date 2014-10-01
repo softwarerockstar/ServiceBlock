@@ -12,7 +12,7 @@ using System.Configuration;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
-namespace VHA.ServiceFoundation.ServiceModel.BindingExtensions
+namespace ServiceBlock.Foundation.ServiceModel.BindingExtensions
 {
     public enum AssertEncryptionHttpSecurityMode
     {

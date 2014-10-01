@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 
-namespace VHA.ServiceFoundation
+namespace ServiceBlock.Foundation
 {
     [ExcludeFromCodeCoverage]
     public sealed class ApplyDataContractResolverAttribute : Attribute, IOperationBehavior

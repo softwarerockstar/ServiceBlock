@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ServiceModel.Channels;
 
-namespace VHA.ServiceFoundation.ServiceModel.BindingExtensions
+namespace ServiceBlock.Foundation.ServiceModel.BindingExtensions
 {
         public class AssertEncryptionHttpTransportBindingElement: HttpTransportBindingElement
         {

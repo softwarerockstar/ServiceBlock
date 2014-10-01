@@ -8,7 +8,7 @@ using System.ServiceModel.Channels;
 using System.Net.Security;
 #endregion
 
-namespace VHA.ServiceFoundation.ServiceModel.Binding
+namespace ServiceBlock.Foundation.ServiceModel.Binding
 {
     /// <summary>
     /// AutoSecuredHttpSecurityCapabilities

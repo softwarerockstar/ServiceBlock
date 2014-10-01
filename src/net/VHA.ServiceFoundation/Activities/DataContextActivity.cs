@@ -8,9 +8,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VHA.ServiceFoundation.Data;
+using ServiceBlock.Foundation.Data;
 
-namespace VHA.ServiceFoundation.Activities
+namespace ServiceBlock.Foundation.Activities
 {
     [Designer("System.Activities.Core.Presentation.SequenceDesigner, System.Activities.Core.Presentation")]
     [DisplayName("Data Context")]

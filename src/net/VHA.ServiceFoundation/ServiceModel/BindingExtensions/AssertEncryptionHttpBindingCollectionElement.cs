@@ -5,7 +5,7 @@ using System.Text;
 using System.ServiceModel.Configuration;
 using System.Configuration;
 
-namespace VHA.ServiceFoundation.ServiceModel.BindingExtensions
+namespace ServiceBlock.Foundation.ServiceModel.BindingExtensions
 {
 public class AssertEncryptionHttpBindingCollectionElement: StandardBindingCollectionElement<AssertEncryptionHttpBinding,AssertEncryptionHttpBindingElement>
 {

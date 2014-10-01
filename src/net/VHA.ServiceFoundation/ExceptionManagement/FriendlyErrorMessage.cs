@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VHA.ServiceFoundation.ExceptionManagement
+namespace ServiceBlock.Foundation.ExceptionManagement
 {
     [ExcludeFromCodeCoverage]
     public class FriendlyErrorMessage

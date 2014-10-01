@@ -6,11 +6,11 @@ using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Web;
-using VHA.ServiceFoundation;
-using VHA.ServiceFoundation.ExceptionManagement;
-using VHA.ServiceFoundation.Orchestrations;
+using ServiceBlock.Foundation;
+using ServiceBlock.Foundation.ExceptionManagement;
+using ServiceBlock.Foundation.Orchestrations;
 
-namespace VHA.ServiceFoundation.ServiceModel.Web
+namespace ServiceBlock.Foundation.ServiceModel.Web
 {
     public static class OrchestrationExecutorExtensions
     {

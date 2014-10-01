@@ -8,8 +8,8 @@
     <ProjectGuid>{D687C7B8-E0D7-40D8-8229-07428BAC123E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VHA.ServiceFoundation</RootNamespace>
-    <AssemblyName>VHA.ServiceFoundation</AssemblyName>
+    <RootNamespace>ServiceBlock.Foundation</RootNamespace>
+    <AssemblyName>ServiceBlock.Foundation</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -250,8 +250,8 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="VHA.ServiceFoundation.1.0.0.nuspec" />
-    <None Include="VHA.ServiceFoundation.1.0.0.nuspec.nupkg" />
+    <None Include="ServiceBlock.Foundation.1.0.0.nuspec" />
+    <None Include="ServiceBlock.Foundation.1.0.0.nuspec.nupkg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

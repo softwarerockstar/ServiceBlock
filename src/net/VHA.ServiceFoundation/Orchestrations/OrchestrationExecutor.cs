@@ -12,11 +12,11 @@ using System.Web;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Unity;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
 using Microsoft.Practices.Unity;
-using VHA.ServiceFoundation.Data;
-using VHA.ServiceFoundation.ExceptionManagement;
+using ServiceBlock.Foundation.Data;
+using ServiceBlock.Foundation.ExceptionManagement;
 using System.ServiceModel;
 
-namespace VHA.ServiceFoundation.Orchestrations
+namespace ServiceBlock.Foundation.Orchestrations
 {
     [ExcludeFromCodeCoverage]
     public class OrchestrationExecutor<T, K> where T : class where K : class

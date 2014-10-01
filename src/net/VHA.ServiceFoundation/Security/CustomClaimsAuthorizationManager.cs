@@ -7,7 +7,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Xml;
 
-namespace VHA.ServiceFoundation.Security
+namespace ServiceBlock.Foundation.Security
 {
     /// <summary>
     /// Simple ClaimsAuthorizationManager implementation that reads policy information from the .config file

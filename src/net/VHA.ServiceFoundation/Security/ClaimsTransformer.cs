@@ -7,9 +7,9 @@ using System.Runtime.Caching;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Reflection;
-using VHA.ServiceFoundation.Composition;
+using ServiceBlock.Foundation.Composition;
 
-namespace VHA.ServiceFoundation.Security
+namespace ServiceBlock.Foundation.Security
 {
     public class ClaimsTransformer : ClaimsAuthenticationManager
     {

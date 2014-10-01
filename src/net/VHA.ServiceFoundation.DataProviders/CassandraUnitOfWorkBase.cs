@@ -4,8 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using VHA.ServiceFoundation;
-using VHA.ServiceFoundation.Data;
+using ServiceBlock.Foundation;
+using ServiceBlock.Foundation.Data;
 using Cassandra;
 using Cassandra.Data.Linq;
 using System.Text.RegularExpressions;
@@ -13,7 +13,7 @@ using System.Data.OleDb;
 using System.Configuration;
 using System.ComponentModel.DataAnnotations;
 
-namespace VHA.ServiceFoundation.DataProviders
+namespace ServiceBlock.Foundation.DataProviders
 {
     public abstract class CassandraUnitOfWorkBase : IUnitOfWorkEx, IDisposable
     {

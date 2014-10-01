@@ -5,9 +5,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VHA.ServiceFoundation.Data;
+using ServiceBlock.Foundation.Data;
 
-namespace VHA.ServiceFoundation.Activities
+namespace ServiceBlock.Foundation.Activities
 {
     [ExcludeFromCodeCoverage]
     public class SaveChanges : DataActivityBase

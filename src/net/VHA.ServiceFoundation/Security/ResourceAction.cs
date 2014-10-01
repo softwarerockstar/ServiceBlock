@@ -15,7 +15,7 @@
 
 using System;
 
-namespace VHA.ServiceFoundation.Security
+namespace ServiceBlock.Foundation.Security
 {
     /// <summary>
     /// Class to encapsulate resource/action pair

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
-using VHA.ServiceFoundation.Properties;
+using ServiceBlock.Foundation.Properties;
 
-namespace VHA.ServiceFoundation.ExceptionManagement
+namespace ServiceBlock.Foundation.ExceptionManagement
 {
     [Serializable]
     [ExcludeFromCodeCoverage]

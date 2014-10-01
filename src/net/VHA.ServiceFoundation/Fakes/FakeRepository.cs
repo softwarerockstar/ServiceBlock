@@ -6,9 +6,9 @@
 //using System.Linq;
 //using System.Text;
 //using System.Threading.Tasks;
-//using VHA.ServiceFoundation.Data;
+//using ServiceBlock.Foundation.Data;
 
-//namespace VHA.ServiceFoundation.Fakes
+//namespace ServiceBlock.Foundation.Fakes
 //{
 //    [ExcludeFromCodeCoverage]
 //    public class FakeRepository<T> : IDbSet<T>

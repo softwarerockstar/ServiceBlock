@@ -5,7 +5,7 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Diagnostics.CodeAnalysis;
 
-namespace VHA.ServiceFoundation
+namespace ServiceBlock.Foundation
 {
     // TODO: should use this class instead of PagingList
 
