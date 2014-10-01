@@ -1,0 +1,22 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="cs" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using VHA.ServiceFoundation.Data;
+
+namespace <#=Model.Namespace#>
+{
+    public partial interface <#=Model.InterfaceName#> : IUnitOfWork
+    {
+<# foreach (var item in Model.DomainClasses) { #>
+		IDbSet<<#=item.Key#>> <#=item.Value#>{ get; }
+<#}#>
+	}
+}
+
+

@@ -1,0 +1,1246 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+	    <style type="text/css">
+
+
+#content p {
+	line-height: 130%;
+	margin: 12px 0px 12px 0px;
+	padding: 0px;
+}
+
+p, ol, ul {
+	margin-top: 0;
+}
+
+.syntaxhighlighter
+{
+	background-color: #E7E5DC !important;
+}
+
+.syntaxhighlighter
+{
+	width: 100% !important;
+	margin: 1em 0 1em 0 !important;
+	padding: 1px !important; /* adds a little border on top and bottom */
+	position: relative !important;
+}
+
+.syntaxhighlighter,
+.syntaxhighlighter div,
+.syntaxhighlighter code,
+.syntaxhighlighter span
+{
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	outline: 0 !important;
+	background: none !important;
+	text-align: left !important;
+	float: none !important;
+	vertical-align: baseline !important;
+	position: static !important;
+	left: auto !important;
+	top: auto !important;
+	right: auto !important;
+	bottom: auto !important;
+	height: auto !important;
+	width: auto !important;
+	line-height: 1.1em !important;
+	font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+	font-size: 1em !important;
+}
+
+.syntaxhighlighter .toolbar
+{
+	background-color: #F8F8F8 !important;
+	border: #E7E5DC solid 1px !important;
+}
+
+.syntaxhighlighter .toolbar
+{
+	position: absolute !important;
+	right: 0px !important;
+	top: 0px !important;
+	font-size: 1px !important;
+	padding: 8px 8px 8px 0 !important; /* in px because images don't scale with ems */
+	display: none;
+}
+
+.syntaxhighlighter .toolbar a.item,
+.syntaxhighlighter .toolbar .item
+{
+	display: block !important;
+	float: left !important;
+	margin-left: 8px !important;
+	background-repeat: no-repeat !important;
+	overflow: hidden !important;
+	text-indent: -5000px !important;
+}
+
+.syntaxhighlighter .toolbar a
+{
+	color: #a0a0a0 !important;
+}
+
+a, a:visited, a:active {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #27609b;
+	text-decoration: none;
+}
+
+.syntaxhighlighter .line .number
+{
+	color: #5C5C5C !important;
+}
+
+.syntaxhighlighter .line .number
+{
+	float: left !important; 
+	width: 3em !important; 
+	padding-right: .3em !important;
+	text-align: right !important;
+	display: none;
+}
+
+.syntaxhighlighter .line.alt1 .content
+{
+	background-color: #fff !important;
+}
+
+.syntaxhighlighter .line .content
+{
+	color: #000 !important;
+}
+
+.syntaxhighlighter .line .content
+{ 
+	padding-left: .5em !important;
+	display: block !important;
+}
+
+.syntaxhighlighter .line .content .block
+{
+	display: block !important;
+	padding-left: 1.5em !important;
+	text-indent: -1.5em !important;
+}
+
+.syntaxhighlighter .plain,
+.syntaxhighlighter .plain a
+{ 
+	color: #000 !important;
+}
+
+.syntaxhighlighter .keyword
+{ 
+	color: #069 !important; 
+	font-weight: bold !important; 
+}
+
+.syntaxhighlighter .line.alt2 .content
+{
+	background-color: #fff !important;
+}
+
+.syntaxhighlighter .line .content .spaces
+{
+	display: none !important;
+}
+
+.syntaxhighlighter .color1,
+.syntaxhighlighter .color1 a
+{ 
+	color: #808080 !important; 
+}
+
+.syntaxhighlighter .string,
+.syntaxhighlighter .string a
+{
+	color: blue !important; 
+}
+
+#content h2 {
+	border-bottom: 1px solid #e7eef5;
+}
+
+            .style1
+            {
+                letter-spacing: -1px;
+                font-size: 22px;
+                text-decoration: none;
+                font-weight: normal;
+                color: #27609b;
+                margin: 0px;
+            }
+        </style>
+	</head>
+	<body>
+	
+	    <h2 class="style1">
+            <a href="http://toranbillups.com/blog/archive/2009/04/14/How-to-fake-Transport-Security-in-WCF">
+            http://toranbillups.com/blog/archive/2009/04/14/How-to-fake-Transport-Security-in-WCF</a></h2>
+        <p class="style1">
+            &nbsp;</p>
+        <h2 class="style1">
+            <a href="http://toranbillups.com/blog/archive/2009/04/14/How-to-fake-Transport-Security-in-WCF">
+            How to fake Transport Security in WCF</a></h2>
+        <p>
+            I have spent the last 18 months in and out of the WCF stack but until recently I 
+            had no reason to write a custom binding. This has been in part because WCF out 
+            of the box offers enough configuration options that I did not need to get my 
+            hands dirty. This was a big reason I took a step toward WCF and a step away from 
+            ASMX in 2007. Especially when it comes to SOAP and the usual WS* mess everyone 
+            in the web service world loves so much. With WCF you get all the SOAP 1.1 / 1.2 
+            work done for you, among a ton of other messaging configurations. And if you are 
+            working in or around the enterprise like I do, you can also tap into the 
+            membership provider to leverage role based access with a few simple attributes.</p>
+        <p>
+            In my first few &quot;demo-ware&quot; applications to get hype around WCF I used a simple 
+            WsHttpBinding coupled with the membership provider via service behavior.</p>
+        <div id="highlighter_580016" class="syntaxhighlighter ">
+            <div class="bar">
+                <div class="toolbar">
+                    <a class="item viewSource" commandname="viewSource" 
+                        highlighterid="highlighter_580016" href="#viewSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="view source">view source</a><a 
+                        class="item printSource" commandname="printSource" 
+                        highlighterid="highlighter_580016" href="#printSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="print">print</a><a 
+                        class="item about" commandname="about" highlighterid="highlighter_580016" 
+                        href="#about" style="WIDTH: 16px; HEIGHT: 16px" title="?">?</a></div>
+            </div>
+            <div class="lines">
+                <div class="line alt1">
+                    <code class="number">01.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SYSTEM.SERVICEMODEL</code><code class="plain">&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">02.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICES</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">03.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICE</code> <code class="color1">behaviorConfiguration</code><code 
+                        class="plain">=</code><code class="string">&quot;NorthwindBehavior&quot;</code>
+                    <code class="color1">name</code><code class="plain">=</code><code 
+                        class="string">&quot;SampleApplicationWCF.Library.ProductService&quot;</code><code 
+                        class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 112px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">ENDPOINT</code> <code class="color1">name</code><code 
+                        class="plain">=</code><code class="string">&quot;wsHttpProductService&quot;</code>
+                    <code class="color1">bindingConfiguration</code><code class="plain">=</code><code 
+                        class="string">&quot;wsHttp&quot;</code> <code class="color1">binding</code><code 
+                        class="plain">=</code><code class="string">&quot;wsHttpBinding&quot;</code>
+                    <code class="color1">contract</code><code class="plain">=</code><code 
+                        class="string">&quot;SampleApplicationWCF.Library.IProductService&quot;</code>
+                    <code class="color1">address</code><code class="plain">=</code><code 
+                        class="string">&quot;&quot;</code> <code class="plain">/&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SERVICE</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SERVICES</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BINDINGS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">WSHTTPBINDING</code><code class="plain">&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">09.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 112px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BINDING</code> <code class="color1">name</code><code 
+                        class="plain">=</code><code class="string">&quot;wsHttp&quot;</code><code 
+                        class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 140px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SECURITY</code> <code class="color1">mode</code><code 
+                        class="plain">=</code><code class="string">&quot;TransportWithMessageCredential&quot;</code><code 
+                        class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 168px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">TRANSPORT</code> <code class="plain">/&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 168px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">MESSAGE</code> <code class="color1">establishSecurityContext</code><code 
+                        class="plain">=</code><code class="string">&quot;true&quot;</code>
+                    <code class="color1">negotiateServiceCredential</code><code class="plain">=</code><code 
+                        class="string">&quot;false&quot;</code> <code class="color1">clientCredentialType</code><code 
+                        class="plain">=</code><code class="string">&quot;UserName&quot;</code>
+                    <code class="plain">/&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">13.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 140px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SECURITY</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">14.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 112px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BINDING</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">15.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">WSHTTPBINDING</code><code class="plain">&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">16.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BINDINGS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">17.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BEHAVIORS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">18.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICEBEHAVIORS</code><code class="plain">&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">19.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 112px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BEHAVIOR</code> <code class="color1">name</code><code 
+                        class="plain">=</code><code class="string">&quot;NorthwindBehavior&quot;</code><code 
+                        class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">20.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 140px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICEMETADATA</code> <code class="color1">httpGetEnabled</code><code 
+                        class="plain">=</code><code class="string">&quot;true&quot;</code> <code class="plain">
+                    /&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">21.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 140px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICEAUTHORIZATION</code> <code class="color1">
+                    principalPermissionMode</code><code class="plain">=</code><code class="string">&quot;UseAspNetRoles&quot;</code>
+                    <code class="plain">/&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">22.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 140px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICECREDENTIALS</code><code class="plain">&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">23.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 168px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">USERNAMEAUTHENTICATION</code> <code class="color1">
+                    userNamePasswordValidationMode</code><code class="plain">=</code><code 
+                        class="string">&quot;MembershipProvider&quot;</code> <code class="plain">/&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">24.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 140px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SERVICECREDENTIALS</code><code class="plain">&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">25.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 112px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BEHAVIOR</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">26.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SERVICEBEHAVIORS</code><code class="plain">&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">27.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BEHAVIORS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">28.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SYSTEM.SERVICEMODEL</code><code class="plain">&gt;</code></span></span></div>
+            </div>
+        </div>
+        <p>
+            But with these samples being just that, they never got implemented in our 
+            production environment. But late last year another developer came to me with a 
+            project that had a requirement to interop with someone outside of our network. I 
+            took on a mentor role as I thought I knew it all ... and we got a working 
+            solution ready for a migration to staging. And to my surprise I found that WCF 
+            required SSL be installed on the IIS server(s) when you use the security mode 
+            TransportWithMessageCredential inside a WsHttpBinding. This makes sense as you 
+            want to ensure SSL is setup when you start throwing around usernames and 
+            passwords.</p>
+        <p>
+            In my case it turns out I had not done my homework with regards to our 
+            infrastructure because the production enviornment had a proxy that sits in front 
+            of the load balanced IIS farm. And it was on this proxy that our SSL certs are 
+            installed (instead of on the IIS box themselves). Here is where I ran into my 
+            dilemma ...</p>
+        <p>
+            We needed a solution that would allow the WSDL to be pulled from an individual 
+            IIS server via the farm, yet ensure usernames were not being thrown around in 
+            plain text. The solution came from a cry of desperation on stackoverflow<HTTP> 
+            after I had exhausted almost 2 weeks worth of R&amp;D with almost no results.</p>
+        <p>
+            The only answer I got on
+            <a href="http://stackoverflow.com/questions/746009/how-to-use-forms-auth-when-ssl-is-on-a-proxy-in-front-of-the-iis-farm-wcf" 
+                target="_blank">stackoverflow</a> pointed me to this
+            <a href="http://blog.hackedbrain.com/archive/2006/09/26/5281.aspx" 
+                target="_blank">post</a></p>
+        <p>
+            And from this post I was pointed to
+            <a href="http://social.msdn.microsoft.com/forums/en-US/wcf/thread/87a254c8-e9d1-4d4c-8f62-54eae497423f/" 
+                target="_blank">another</a></p>
+        <p>
+            Armed with a new set of information it looked as if I could &quot;fake&quot; the Transport 
+            so the WCF service would &quot;function&quot; like the normal WsHttpBinding even if the 
+            IIS server itself did not have any sort of SSL cert installed.</p>
+        <p>
+            I could have pointed to the posts above and called it quits, but what I found is 
+            that they did not seem to be 100% complete. This is where I come in.
+        </p>
+        <p>
+            The first class that you need to create will represent a custom binding element 
+            for our &quot;faked&quot; transport binding.</p>
+        <div id="highlighter_506202" class="syntaxhighlighter ">
+            <div class="bar">
+                <div class="toolbar">
+                    <a class="item viewSource" commandname="viewSource" 
+                        highlighterid="highlighter_506202" href="#viewSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="view source">view source</a><a 
+                        class="item printSource" commandname="printSource" 
+                        highlighterid="highlighter_506202" href="#printSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="print">print</a><a 
+                        class="item about" commandname="about" highlighterid="highlighter_506202" 
+                        href="#about" style="WIDTH: 16px; HEIGHT: 16px" title="?">?</a></div>
+            </div>
+            <div class="lines">
+                <div class="line alt1">
+                    <code class="number">01.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="keyword">namespace</code>
+                    <code class="plain">App.BindingExtenions { </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">02.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="keyword">public</code>
+                    <code class="keyword">class</code> <code class="plain">
+                    HttpsViaProxyTransportBindingElement : HttpTransportBindingElement, 
+                    ITransportTokenAssertionProvider { </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">03.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">public</code>
+                    <code class="keyword">override</code> <code class="plain">T 
+                    GetProperty&lt;T&gt;(BindingContext context) { </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">if</code>
+                    <code class="plain">(</code><code class="keyword">typeof</code><code 
+                        class="plain">(T) == </code><code class="keyword">typeof</code><code 
+                        class="plain">(ISecurityCapabilities)) </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 112px !important"><code class="keyword">return</code>
+                    <code class="plain">(T)(ISecurityCapabilities)</code><code class="keyword">new</code>
+                    <code class="plain">AutoSecuredHttpSecurityCapabilities(); </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">06.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt1">
+                    <code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">return</code>
+                    <code class="keyword">base</code><code class="plain">.GetProperty&lt;T&gt;(context);
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">09.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt2">
+                    <code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">public</code>
+                    <code class="keyword">override</code> <code class="plain">BindingElement Clone() 
+                    { </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">return</code>
+                    <code class="keyword">new</code> <code class="plain">
+                    HttpsViaProxyTransportBindingElement(); </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">13.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt2">
+                    <code class="number">14.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">public</code>
+                    <code class="plain">System.Xml.XmlElement GetTransportTokenAssertion() { </code>
+                    </span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">15.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">return</code>
+                    <code class="keyword">null</code><code class="plain">; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">16.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">17.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">18.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="plain">}</code></span></span></div>
+            </div>
+        </div>
+        <p>
+            Next you will need to create a custom implementation of the 
+            ISecurityCapabilities interface to satisfy the dependency found in the above.</p>
+        <div id="highlighter_293179" class="syntaxhighlighter ">
+            <div class="bar">
+                <div class="toolbar">
+                    <a class="item viewSource" commandname="viewSource" 
+                        highlighterid="highlighter_293179" href="#viewSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="view source">view source</a><a 
+                        class="item printSource" commandname="printSource" 
+                        highlighterid="highlighter_293179" href="#printSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="print">print</a><a 
+                        class="item about" commandname="about" highlighterid="highlighter_293179" 
+                        href="#about" style="WIDTH: 16px; HEIGHT: 16px" title="?">?</a></div>
+            </div>
+            <div class="lines">
+                <div class="line alt1">
+                    <code class="number">01.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="keyword">namespace</code>
+                    <code class="plain">App.BindingExtenions </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">02.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="plain">{ </code></span>
+                    </span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">03.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="keyword">public</code>
+                    <code class="keyword">class</code> <code class="plain">
+                    AutoSecuredHttpSecurityCapabilities : ISecurityCapabilities </code></span>
+                    </span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">public</code>
+                    <code class="plain">ProtectionLevel SupportedRequestProtectionLevel </code>
+                    </span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">{
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">get</code>
+                    <code class="plain">{ </code><code class="keyword">return</code>
+                    <code class="plain">ProtectionLevel.EncryptAndSign; } </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">09.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt2">
+                    <code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">public</code>
+                    <code class="plain">ProtectionLevel SupportedResponseProtectionLevel </code>
+                    </span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">{
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">get</code>
+                    <code class="plain">{ </code><code class="keyword">return</code>
+                    <code class="plain">ProtectionLevel.EncryptAndSign; } </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">13.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">14.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt1">
+                    <code class="number">15.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">public</code>
+                    <code class="keyword">bool</code> <code class="plain">
+                    SupportsClientAuthentication </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">16.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">{
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">17.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">get</code>
+                    <code class="plain">{ </code><code class="keyword">return</code>
+                    <code class="keyword">false</code><code class="plain">; } </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">18.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">19.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt2">
+                    <code class="number">20.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">public</code>
+                    <code class="keyword">bool</code> <code class="plain">
+                    SupportsClientWindowsIdentity </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">21.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">{
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">22.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">get</code>
+                    <code class="plain">{ </code><code class="keyword">return</code>
+                    <code class="keyword">false</code><code class="plain">; } </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">23.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">24.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt1">
+                    <code class="number">25.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">public</code>
+                    <code class="keyword">bool</code> <code class="plain">
+                    SupportsServerAuthentication </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">26.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">{
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">27.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">get</code>
+                    <code class="plain">{ </code><code class="keyword">return</code>
+                    <code class="keyword">true</code><code class="plain">; } </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">28.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">29.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt2">
+                    <code class="number">30.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">31.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="plain">}</code></span></span></div>
+            </div>
+        </div>
+        <p>
+            And finally you will need to create one last class to represent the actual 
+            transport element</p>
+        <div id="highlighter_580846" class="syntaxhighlighter ">
+            <div class="bar">
+                <div class="toolbar">
+                    <a class="item viewSource" commandname="viewSource" 
+                        highlighterid="highlighter_580846" href="#viewSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="view source">view source</a><a 
+                        class="item printSource" commandname="printSource" 
+                        highlighterid="highlighter_580846" href="#printSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="print">print</a><a 
+                        class="item about" commandname="about" highlighterid="highlighter_580846" 
+                        href="#about" style="WIDTH: 16px; HEIGHT: 16px" title="?">?</a></div>
+            </div>
+            <div class="lines">
+                <div class="line alt1">
+                    <code class="number">01.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="keyword">namespace</code>
+                    <code class="plain">App.BindingExtenions { </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">02.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="keyword">public</code>
+                    <code class="keyword">class</code> <code class="plain">
+                    HttpsViaProxyTransportElement : HttpTransportElement { </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">03.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt2">
+                    <code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">public</code>
+                    <code class="keyword">override</code> <code class="plain">Type 
+                    BindingElementType { </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">get</code>
+                    <code class="plain">{ </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 112px !important"><code class="keyword">return</code>
+                    <code class="keyword">typeof</code><code class="plain">(HttpsViaProxyTransportBindingElement);
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">09.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt2">
+                    <code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">protected</code>
+                    <code class="keyword">override</code> <code class="plain">
+                    TransportBindingElement CreateDefaultBindingElement() { </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="keyword">return</code>
+                    <code class="keyword">new</code> <code class="plain">
+                    HttpsViaProxyTransportBindingElement(); </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">13.</code><span class="content"><code class="spaces">&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 7px !important">&nbsp;</span></span></div>
+                <div class="line alt2">
+                    <code class="number">14.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">15.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="plain">}</code></span></span></div>
+            </div>
+        </div>
+        <p>
+            Now you have the binding Element Extension needed for this custom WCF Binding.</p>
+        <p>
+            After you have the above compile friendly, add a reference to the assembly from 
+            your WCF Service project.</p>
+        <p>
+            Below is a very simple example of how to use this custom binding in your config 
+            file</p>
+        <div id="highlighter_674106" class="syntaxhighlighter ">
+            <div class="bar">
+                <div class="toolbar">
+                    <a class="item viewSource" commandname="viewSource" 
+                        highlighterid="highlighter_674106" href="#viewSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="view source">view source</a><a 
+                        class="item printSource" commandname="printSource" 
+                        highlighterid="highlighter_674106" href="#printSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="print">print</a><a 
+                        class="item about" commandname="about" highlighterid="highlighter_674106" 
+                        href="#about" style="WIDTH: 16px; HEIGHT: 16px" title="?">?</a></div>
+            </div>
+            <div class="lines">
+                <div class="line alt1">
+                    <code class="number">01.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SYSTEM.SERVICEMODEL</code><code class="plain">&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">02.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICES</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">03.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICE</code> <code class="color1">behaviorConfiguration</code><code 
+                        class="plain">=</code><code class="string">&quot;NorthwindBehavior&quot;</code>
+                    <code class="color1">name</code><code class="plain">=</code><code 
+                        class="string">&quot;SampleApplicationWCF.Library.Service.ProductService&quot;</code><code 
+                        class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">ENDPOINT</code> <code class="color1">name</code><code 
+                        class="plain">=</code><code class="string">&quot;wsHttpProductService&quot;</code>
+                    <code class="color1">bindingConfiguration</code><code class="plain">=</code><code 
+                        class="string">&quot;UserNamePasswordSecured&quot;</code> <code class="color1">binding</code><code 
+                        class="plain">=</code><code class="string">&quot;customBinding&quot;</code>
+                    <code class="color1">contract</code><code class="plain">=</code><code 
+                        class="string">&quot;SampleApplicationWCF.Library.Service.Interfaces.IProductService&quot;</code>
+                    <code class="color1">address</code><code class="plain">=</code><code 
+                        class="string">&quot;&quot;</code> <code class="plain">/&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SERVICE</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SERVICES</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">EXTENSIONS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BINDINGELEMENTEXTENSIONS</code><code class="plain">&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">09.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">ADD</code> <code class="color1">name</code><code 
+                        class="plain">=</code><code class="string">&quot;httpsViaProxyTransport&quot;</code>
+                    <code class="color1">type</code><code class="plain">=</code><code 
+                        class="string">&quot;App.BindingExtenions.HttpsViaProxyTransportElement, 
+                    ClearTextBinding&quot;</code> <code class="plain">/&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BINDINGELEMENTEXTENSIONS</code><code class="plain">&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">EXTENSIONS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BINDINGS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">13.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">CUSTOMBINDING</code><code class="plain">&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">14.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BINDING</code> <code class="color1">name</code><code 
+                        class="plain">=</code><code class="string">&quot;UserNamePasswordSecured&quot;</code><code 
+                        class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">15.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">TEXTMESSAGEENCODING</code> <code class="plain">/&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">16.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SECURITY</code> <code class="color1">authenticationMode</code><code 
+                        class="plain">=</code><code class="string">&quot;UserNameOverTransport&quot;</code>
+                    <code class="plain">/&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">17.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">HTTPSVIAPROXYTRANSPORT</code> <code class="plain">/&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">18.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BINDING</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">19.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">CUSTOMBINDING</code><code class="plain">&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">20.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BINDINGS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">21.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BEHAVIORS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">22.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICEBEHAVIORS</code><code class="plain">&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">23.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BEHAVIOR</code> <code class="color1">name</code><code 
+                        class="plain">=</code><code class="string">&quot;NorthwindBehavior&quot;</code><code 
+                        class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">24.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICEDEBUG</code> <code class="color1">
+                    includeExceptionDetailInFaults</code><code class="plain">=</code><code 
+                        class="string">&quot;true&quot;</code> <code class="plain">/&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">25.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICEMETADATA</code> <code class="color1">httpGetEnabled</code><code 
+                        class="plain">=</code><code class="string">&quot;true&quot;</code> <code class="plain">
+                    /&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">26.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICEAUTHORIZATION</code> <code class="color1">
+                    principalPermissionMode</code><code class="plain">=</code><code class="string">&quot;UseAspNetRoles&quot;</code>
+                    <code class="plain">/&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">27.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SERVICECREDENTIALS</code><code class="plain">&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">28.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">USERNAMEAUTHENTICATION</code> <code class="color1">
+                    userNamePasswordValidationMode</code><code class="plain">=</code><code 
+                        class="string">&quot;MembershipProvider&quot;</code> <code class="plain">/&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">29.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SERVICECREDENTIALS</code><code class="plain">&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">30.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BEHAVIOR</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">31.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SERVICEBEHAVIORS</code><code class="plain">&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">32.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BEHAVIORS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">33.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 14px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SYSTEM.SERVICEMODEL</code><code class="plain">&gt;</code></span></span></div>
+            </div>
+        </div>
+        <p>
+            And finally - the best part is that you do not need to add this custom assembly 
+            to your client app. Instead your client app can keep the config settings to 
+            reflect a normal WsHttpBinding. The only item you need to confirm is set in your 
+            client binding is the security section (shown in the below client config)</p>
+        <div id="highlighter_590659" class="syntaxhighlighter ">
+            <div class="bar">
+                <div class="toolbar">
+                    <a class="item viewSource" commandname="viewSource" 
+                        highlighterid="highlighter_590659" href="#viewSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="view source">view source</a><a 
+                        class="item printSource" commandname="printSource" 
+                        highlighterid="highlighter_590659" href="#printSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="print">print</a><a 
+                        class="item about" commandname="about" highlighterid="highlighter_590659" 
+                        href="#about" style="WIDTH: 16px; HEIGHT: 16px" title="?">?</a></div>
+            </div>
+            <div class="lines">
+                <div class="line alt1">
+                    <code class="number">01.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SYSTEM.SERVICEMODEL</code><code class="plain">&gt; </code>
+                    </span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">02.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BINDINGS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">03.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">WSHTTPBINDING</code><code class="plain">&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">BINDING</code> <code class="color1">name</code><code 
+                        class="plain">=</code><code class="string">&quot;ServiceCustomBinding&quot;</code>
+                    <code class="color1">receiveTimeout</code><code class="plain">=</code><code 
+                        class="string">&quot;12:59:59&quot;</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">RELIABLESESSION</code> <code class="color1">
+                    inactivityTimeout</code><code class="plain">=</code><code class="string">&quot;12:58:59&quot;</code>
+                    <code class="color1">ordered</code><code class="plain">=</code><code 
+                        class="string">&quot;false&quot;</code> <code class="plain">/&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">SECURITY</code> <code class="color1">mode</code><code 
+                        class="plain">=</code><code class="string">&quot;TransportWithMessageCredential&quot;</code><code 
+                        class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">TRANSPORT</code> <code class="color1">clientCredentialType</code><code 
+                        class="plain">=</code><code class="string">&quot;None&quot;</code> <code class="plain">
+                    /&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 84px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">MESSAGE</code> <code class="color1">establishSecurityContext</code><code 
+                        class="plain">=</code><code class="string">&quot;false&quot;</code>
+                    <code class="color1">clientCredentialType</code><code class="plain">=</code><code 
+                        class="string">&quot;UserName&quot;</code> <code class="plain">/&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">09.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 70px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SECURITY</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BINDING</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">WSHTTPBINDING</code><code class="plain">&gt; </code></span>
+                    </span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">BINDINGS</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">13.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">CLIENT</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">14.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 42px !important"><code class="plain">&lt;</code><code 
+                        class="keyword">ENDPOINT</code> <code class="color1">name</code><code 
+                        class="plain">=</code><code class="string">&quot;wsHttpProductService&quot;</code>
+                    <code class="color1">bindingConfiguration</code><code class="plain">=</code><code 
+                        class="string">&quot;ServiceCustomBinding&quot;</code> <code class="color1">binding</code><code 
+                        class="plain">=</code><code class="string">&quot;wsHttpBinding&quot;</code>
+                    <code class="color1">contract</code><code class="plain">=</code><code 
+                        class="string">&quot;ProductService.IProductService&quot;</code> <code class="color1">
+                    address</code><code class="plain">=</code><code class="string">&quot;<a 
+                        href="https://proxyserver/app/productservice.svc">https://proxyserver/app/productservice.svc</a>&quot;</code>
+                    <code class="plain">/&gt; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">15.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">CLIENT</code><code class="plain">&gt; </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">16.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 14px !important"><code class="plain">&lt;/</code><code 
+                        class="keyword">SYSTEM.SERVICEMODEL</code><code class="plain">&gt;</code></span></span></div>
+            </div>
+        </div>
+        <p>
+            The final tweak needed is at the service level (in your WCF project) to avoid 
+            any Address Mismatch error you might get</p>
+        <div id="highlighter_935827" class="syntaxhighlighter ">
+            <div class="bar">
+                <div class="toolbar">
+                    <a class="item viewSource" commandname="viewSource" 
+                        highlighterid="highlighter_935827" href="#viewSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="view source">view source</a><a 
+                        class="item printSource" commandname="printSource" 
+                        highlighterid="highlighter_935827" href="#printSource" 
+                        style="WIDTH: 16px; HEIGHT: 16px" title="print">print</a><a 
+                        class="item about" commandname="about" highlighterid="highlighter_935827" 
+                        href="#about" style="WIDTH: 16px; HEIGHT: 16px" title="?">?</a></div>
+            </div>
+            <div class="lines">
+                <div class="line alt1">
+                    <code class="number">01.</code><span class="content"><span class="block" 
+                        style="MARGIN-LEFT: 0px !important"><code class="keyword">namespace</code>
+                    <code class="plain">Service </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">02.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 28px !important"><code class="plain">{
+                    </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">03.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">[ServiceBehavior(AddressFilterMode 
+                    = AddressFilterMode.Any)] </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="keyword">public</code>
+                    <code class="keyword">class</code> <code class="plain">ProductService : 
+                    IProductService </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 56px !important"><code class="plain">{
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 77px !important"><code class="keyword">public</code>
+                    <code class="plain">IEnumerable&lt;PRODUCT&gt; GetProductCollection() </code></span>
+                    </span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 77px !important"><code class="plain">{
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 105px !important"><code class="keyword">return</code>
+                    <code class="keyword">null</code><code class="plain">; </code></span></span>
+                </div>
+                <div class="line alt1">
+                    <code class="number">09.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 77px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 77px !important">&nbsp;</span></span></div>
+                <div class="line alt1">
+                    <code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 49px !important"><code class="plain">}
+                    </code></span></span>
+                </div>
+                <div class="line alt2">
+                    <code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><span 
+                        class="block" style="MARGIN-LEFT: 21px !important"><code class="plain">}</code></span></span></div>
+            </div>
+        </div>
+        <p>
+            Now when my client app connects to the web service via the proxy (https) I 
+            actually connect to the IIS server w/out any SSL cert installed. (A-Ha! We have 
+            faked the transport with message creds!)</p>
+	
+	</body>
+</html>

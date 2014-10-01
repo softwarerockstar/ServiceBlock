@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VHA.ServiceFoundation", "src\net\VHA.ServiceFoundation\VHA.ServiceFoundation.csproj", "{D687C7B8-E0D7-40D8-8229-07428BAC123E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VHA.ServiceFoundation.DataProviders", "src\net\VHA.ServiceFoundation.DataProviders\VHA.ServiceFoundation.DataProviders.csproj", "{7EC31F45-3123-44CE-9699-C44FC811E373}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E729231F-2ACB-43A8-BC44-F7D2502A8F51}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs2012.corp.vha.com/tfs/pmo
+		SccProjectUniqueName0 = src\\net\\VHA.ServiceFoundation\\VHA.ServiceFoundation.csproj
+		SccProjectName0 = src/net/VHA.ServiceFoundation
+		SccLocalPath0 = src\\net\\VHA.ServiceFoundation
+		SccProjectUniqueName1 = src\\net\\VHA.ServiceFoundation.DataProviders\\VHA.ServiceFoundation.DataProviders.csproj
+		SccProjectName1 = src/net/VHA.ServiceFoundation.DataProviders
+		SccLocalPath1 = src\\net\\VHA.ServiceFoundation.DataProviders
+		SccLocalPath2 = .
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D687C7B8-E0D7-40D8-8229-07428BAC123E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D687C7B8-E0D7-40D8-8229-07428BAC123E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D687C7B8-E0D7-40D8-8229-07428BAC123E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D687C7B8-E0D7-40D8-8229-07428BAC123E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EC31F45-3123-44CE-9699-C44FC811E373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EC31F45-3123-44CE-9699-C44FC811E373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EC31F45-3123-44CE-9699-C44FC811E373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EC31F45-3123-44CE-9699-C44FC811E373}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.1\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.Logging.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.WCF.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Validation.5.0.505.0\lib\NET35
+	EndGlobalSection
+EndGlobal

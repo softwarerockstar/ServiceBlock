@@ -1,0 +1,38 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="gen.cs" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+using System;
+using System.Activities;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
+using VHA.ServiceFoundation;
+using VHA.ServiceFoundation.Activities;
+using VHA.ServiceFoundation.Data;
+using <#=Model.EntityNamespace#>;
+
+namespace <#=Model.Namespace#>.<#=Model.EntityName#>
+{
+    public sealed class GetById : DataActivityBase<<#=Model.EntityNamespace#>.<#=Model.EntityName#>>
+    {
+        [RequiredArgument]
+        public InArgument<int> EntityId { get; set; }
+
+        public InArgument<string> IncludeProperties { get; set; }
+
+        protected override void Execute(NativeActivityContext context)
+        {
+            var dataContext = base.GetUnitOfWork<<#=Model.UoWInterfaceName#>>(context);
+
+            var id = EntityId.Get(context);
+            var includProperties = IncludeProperties.Get(context);
+
+            var toReturn = dataContext.GetWithSelector<<#=Model.EntityNamespace#>.<#=Model.EntityName#>>
+                (c => c.<#=Model.PrimaryKey#> == id, includProperties).FirstOrDefault();
+
+            Result.Set(context, toReturn);
+        }
+    }
+}

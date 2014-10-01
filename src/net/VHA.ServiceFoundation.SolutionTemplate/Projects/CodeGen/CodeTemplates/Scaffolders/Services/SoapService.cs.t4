@@ -1,0 +1,57 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="gen.cs" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+using <#=Model.MessagesNamespace#>.<#=Model.EntityName#>;
+using VHA.ServiceFoundation.Orchestrations;
+
+namespace <#=Model.ServiceNamespace#>
+{
+    public partial class Soap<#=Model.EntityName#>Service : ISoap<#=Model.EntityName#>Service
+    {
+        #region I<#=Model.EntityName#>Service Members
+
+        public <#=Model.EntityName#>GetAllResponse GetAll(<#=Model.EntityName#>GetAllRequest request)
+        {
+            var executor = OrchestrationExecutorFactory.CreateExecutor<<#=Model.EntityName#>GetAllRequest, <#=Model.EntityName#>GetAllResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "GetAll");
+
+            return executor.Execute(request);
+        }
+
+        public <#=Model.EntityName#>GetWithCriteriaResponse GetWithCriteria(<#=Model.EntityName#>GetWithCriteriaRequest request)
+        {
+            var executor = OrchestrationExecutorFactory.CreateExecutor<<#=Model.EntityName#>GetWithCriteriaRequest, <#=Model.EntityName#>GetWithCriteriaResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "GetWithCriteria");
+
+            return executor.Execute(request);
+
+        }
+
+        public <#=Model.EntityName#>GetByIdResponse GetById(<#=Model.EntityName#>GetByIdRequest request)
+        {
+            var executor = OrchestrationExecutorFactory.CreateExecutor<<#=Model.EntityName#>GetByIdRequest, <#=Model.EntityName#>GetByIdResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "GetById");
+
+            return executor.Execute(request);
+
+        }
+
+        public <#=Model.EntityName#>AddOrUpdateResponse AddOrUpdate(<#=Model.EntityName#>AddOrUpdateRequest request)
+        {
+            var executor = OrchestrationExecutorFactory.CreateExecutor<<#=Model.EntityName#>AddOrUpdateRequest, <#=Model.EntityName#>AddOrUpdateResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "AddOrUpdate");
+
+            return executor.Execute(request, true);
+        }
+
+        public <#=Model.EntityName#>DeleteResponse Delete(<#=Model.EntityName#>DeleteRequest request)
+        {
+            var executor = OrchestrationExecutorFactory.CreateExecutor<<#=Model.EntityName#>DeleteRequest, <#=Model.EntityName#>DeleteResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "Delete");
+
+            return executor.Execute(request);
+        }
+
+        #endregion
+    }
+}

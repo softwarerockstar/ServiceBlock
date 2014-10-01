@@ -1,0 +1,19 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="asax.cs" #>
+using System;
+using System.Collections.Generic;
+using System.ServiceModel.Activation;
+using System.ServiceModel.Syndication;
+using System.Web.Routing;
+
+namespace Services
+{
+    public class Global : System.Web.HttpApplication
+    {
+        protected void Application_Start(object sender, EventArgs e)
+        {
+            new RestRoutes().SetupRoutes();
+            new SoapRoutes().SetupRoutes();
+        }
+    }
+}

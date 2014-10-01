@@ -1,0 +1,4 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="svc" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+<%@ ServiceHost Language="C#" Service="<#=Model.ServiceNamespace#>.<#=Model.EntityName#>Service" CodeBehind="<#=Model.EntityName#>Service.svc.cs" %>

@@ -1,0 +1,136 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="gen.xaml" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="<#=Model.WorkflowNamespace#>.<#=Model.EntityName#>.Delete"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:ddac="clr-namespace:<#=Model.DataNamespace#>.<#=Model.EntityName#>;assembly=<#=Model.DataAssemblyName#>"
+ xmlns:ddm="clr-namespace:<#=Model.EntityNamespace#>;assembly=<#=Model.DomainNamespace#>"
+ xmlns:ddmc="clr-namespace:<#=Model.MessagesNamespace#>.<#=Model.EntityName#>;assembly=<#=Model.DomainNamespace#>"
+ xmlns:dea="clr-namespace:VHA.ServiceFoundation.Activities;assembly=VHA.ServiceFoundation"
+ xmlns:ded="clr-namespace:VHA.ServiceFoundation.Data;assembly=VHA.ServiceFoundation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="request" Type="InArgument(ddmc:<#=Model.EntityName#>DeleteRequest)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="unitOfWork" Type="InArgument(ded:<#=Model.UoWInterfaceName#>)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="response" Type="OutArgument(ddmc:<#=Model.EntityName#>DeleteResponse)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef><#=Model.WorkflowAssemblyName#>.Activity1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>Microsoft.Practices.EnterpriseLibrary.Validation</x:String>
+      <x:String><#=Model.MessagesNamespace#>.<#=Model.EntityName#></x:String>
+      <x:String>System.Data.Entity</x:String>
+      <x:String>System.ServiceModel</x:String>
+      <x:String><#=Model.EntityNamespace#></x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>EntityFramework</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.Common</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.ExceptionHandling</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.Validation</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.ServiceLocation</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.Configuration</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.Interception</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.Interception.Configuration</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.DataAnnotations</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.EnterpriseServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference><#=Model.DataAssemblyName#></AssemblyReference>
+      <AssemblyReference>VHA.ServiceFoundation</AssemblyReference>
+      <AssemblyReference><#=Model.DomainNamespace#></AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference><#=Model.WorkflowAssemblyName#></AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <dea:DataContextActivity sap2010:WorkflowViewState.IdRef="DataContextActivity_3">
+    <dea:DataContextActivity.Activities>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="ddmc:<#=Model.EntityName#>DeleteResponse">
+            <mca:CSharpReference x:TypeArguments="ddmc:<#=Model.EntityName#>DeleteResponse">response</mca:CSharpReference>
+          </OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="ddmc:<#=Model.EntityName#>DeleteResponse">
+            <mca:CSharpValue x:TypeArguments="ddmc:<#=Model.EntityName#>DeleteResponse">new <#=Model.EntityName#>DeleteResponse()</mca:CSharpValue>
+          </InArgument>
+        </Assign.Value>
+      </Assign>
+      <ForEach x:TypeArguments="x:Int32" DisplayName="ForEach&lt;Int32&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_3">
+        <ForEach.Values>
+          <InArgument x:TypeArguments="scg:IEnumerable(x:Int32)">
+            <mca:CSharpValue x:TypeArguments="scg:IEnumerable(x:Int32)">request.IdList</mca:CSharpValue>
+          </InArgument>
+        </ForEach.Values>
+        <ActivityAction x:TypeArguments="x:Int32">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Int32" Name="id" />
+          </ActivityAction.Argument>
+          <ddac:Delete sap2010:WorkflowViewState.IdRef="Delete_3">
+            <ddac:Delete.EntityId>
+              <InArgument x:TypeArguments="x:Int32">
+                <mca:CSharpValue x:TypeArguments="x:Int32">id</mca:CSharpValue>
+              </InArgument>
+            </ddac:Delete.EntityId>
+          </ddac:Delete>
+        </ActivityAction>
+      </ForEach>
+      <dea:SaveChanges>
+        <dea:SaveChanges.RowCount>
+          <OutArgument x:TypeArguments="x:Int32">
+            <mca:CSharpReference x:TypeArguments="x:Int32">response.RowCount</mca:CSharpReference>
+          </OutArgument>
+        </dea:SaveChanges.RowCount>
+        <sap2010:WorkflowViewState.IdRef>SaveChanges_1</sap2010:WorkflowViewState.IdRef>
+      </dea:SaveChanges>
+    </dea:DataContextActivity.Activities>
+    <dea:DataContextActivity.UnitOfWork>
+      <InArgument x:TypeArguments="ded:IUnitOfWork">
+        <mca:CSharpValue x:TypeArguments="ded:IUnitOfWork">unitOfWork</mca:CSharpValue>
+      </InArgument>
+    </dea:DataContextActivity.UnitOfWork>
+  </dea:DataContextActivity>
+</Activity>

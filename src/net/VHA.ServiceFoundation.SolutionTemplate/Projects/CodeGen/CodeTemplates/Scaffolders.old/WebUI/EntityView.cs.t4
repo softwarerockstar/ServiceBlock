@@ -1,0 +1,118 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="cshtml" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+<#@ include file="..\..\..\Includes\ModelProperties.tt" #>
+<# var modelDataType = (EnvDTE.CodeType) Model.Entity; #>
+<# var properties = GetModelProperties(modelDataType, false); #>
+<# var primaryKeyProperties = properties.Where(x => x.IsPrimaryKey == true); #>
+<# var nonKeyProperties = properties.Where(x => x.IsPrimaryKey == false && x.IsForeignKey == false); #>
+<# var filterOptionsPrimary = String.Join("", nonKeyProperties.Select(y => "<option value='" + y.Name + "'>" + y.Name.Replace("ID", "") + "</option>")); #>
+<# var foreignKeys = properties.Where(x => x.IsForeignKey == true); #>
+<# var filterOptionsForeign = String.Join("", foreignKeys.Select(y => "<option value='" + y.Name.Replace("ID", "") + ".Name'>" + y.Name.Replace("ID", "") + "</option>")); #>
+@{
+    ViewBag.Title = "<#= Model.EntityNamePlural #>";
+}
+
+<div class="filterBox">
+        <select id="filterFieldName" name="filterFieldName">
+            <#= filterOptionsPrimary #>
+			<#= filterOptionsForeign #>
+        </select>&nbsp;
+        <input type="text" name="filterFieldValue" id="filterFieldValue" />
+        <button type="submit" id="FilterButton">Filter</button>
+</div>
+
+<div id="<#= Model.EntityName #>TableContainer">
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#<#= Model.EntityName #>TableContainer').jtable({
+            title: '<#= Model.EntityName #> List',
+            paging: true,
+            pageSize: 5,
+            sorting: true,
+            defaultSorting: 'Name ASC',
+            actions: {
+                listAction: '@Url.Action("List")',
+                deleteAction: '@Url.Action("Delete")',
+                updateAction: '@Url.Action("Update")',
+                createAction: '@Url.Action("Create")'
+            },
+            fields: {
+                <#= Model.EntityName #>_00: {                    
+						create: false,
+						edit: false,
+						list: false                    
+                }				
+				<# foreach (var pk in primaryKeyProperties)
+					{
+				#>
+					,
+					<#= pk.Name #>: {
+						key: true,
+						create: false,
+						edit: false,
+						list: false
+					}
+				<#
+					}
+				#>
+				<# foreach (var prop in nonKeyProperties)
+					{
+				#>
+					,
+					<#= prop.Name #>: {
+						title: '<#= prop.Name #>'
+
+						<# if(prop.TypeName.Contains("DateTime")) { #>
+						,
+						type: 'date',
+						displayFormat: 'yy-mm-dd'
+						<# } #>
+
+						<# if(prop.TypeName.Contains("bool")) { #>
+						,
+						type: 'checkbox',
+						defaultValue: 'true',
+						values: { 'false': 'No', 'true': 'Yes' }
+						<# } #>
+
+					}
+				<#
+					}
+				#>
+
+				<# foreach (var fk in foreignKeys)
+					{
+				#>
+					,
+
+					<#= fk.Name #>: {
+						title: '<#= fk.Name.Replace("ID", "") #>',
+						options: '@Url.Action("../<#= fk.Name.Replace("ID", "") #>/GetAsOptions")',
+						display: function (data) {
+							return data.record.<#= fk.Name.Replace("ID", "") #>.Name;
+						}
+					}
+				<#
+					}
+				#>				
+            }
+        });
+
+        //Re-load records when user click 'load records' button.
+        $('#FilterButton').click(function (e) {
+            e.preventDefault();
+            $('#<#= Model.EntityName #>TableContainer').jtable('load', {
+                filterFieldName: $('#filterFieldName').val(),
+                filterFieldValue: $('#filterFieldValue').val()
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#FilterButton').click();
+    });
+
+</script>

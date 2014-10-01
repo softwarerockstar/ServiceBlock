@@ -1,0 +1,127 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="cshtml" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+<#@ include file="..\..\..\Includes\ModelProperties.tt" #>
+<# var modelDataType = (EnvDTE.CodeType) Model.Entity; #>
+<# var properties = GetModelProperties(modelDataType, false); #>
+<# var primaryKeyProperties = properties.Where(x => x.IsPrimaryKey == true); #>
+<# var nonKeyProperties = properties.Where(x => x.IsPrimaryKey == false && x.IsForeignKey == false); #>
+<# var filterOptionsPrimary = String.Join("", nonKeyProperties.Where(x => x.TypeName.Contains("string")).Select(y => "<option value='" + y.Name + "'>" + y.Name + "</option>")); #>
+<# var foreignKeys = properties.Where(x => x.IsForeignKey == true); #>
+<# 
+	var fkNames = new Dictionary<string, string>();
+	foreignKeys.ToList().ForEach(y => { int p = y.Name.LastIndexOf("Id", StringComparison.InvariantCultureIgnoreCase); fkNames[y.Name] = y.Name.Remove(p, 2); }); 
+#>
+<# var filterOptionsForeign = String.Join("", foreignKeys.Select(y => "<option value='" + fkNames[y.Name] + ".Name'>" + fkNames[y.Name] + "</option>")); #>
+@{
+    ViewBag.Title = "<#= Model.EntityNamePlural #>";
+}
+
+<div class="filterBox">
+        <select id="filterFieldName" name="filterFieldName">
+            <#= filterOptionsPrimary #>
+			<#= filterOptionsForeign #>
+        </select>&nbsp;
+        <input type="text" name="filterFieldValue" id="filterFieldValue" />
+        <button type="submit" id="FilterButton">Filter</button>
+</div>
+
+<div id="<#= Model.EntityName #>TableContainer">
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#<#= Model.EntityName #>TableContainer').jtable({
+            title: '<#= Model.EntityName #> List',
+            paging: true,
+            pageSize: 5,
+            sorting: true,
+            defaultSorting: 'Name ASC',
+            actions: {
+                listAction: '@Url.Action("List")',
+                deleteAction: '@Url.Action("Delete")',
+                updateAction: '@Url.Action("Update")',
+                createAction: '@Url.Action("Create")'
+            },
+            fields: {
+                <#= Model.EntityName #>_00: {                    
+						create: false,
+						edit: false,
+						list: false                    
+                }				
+				<# foreach (var pk in primaryKeyProperties)
+					{
+				#>
+					,
+					<#= pk.Name #>: {
+						key: true,
+						create: false,
+						edit: false,
+						list: false
+					}
+				<#
+					}
+				#>
+				<# foreach (var prop in nonKeyProperties)
+					{
+				#>
+					,
+					<#= prop.Name #>: {
+						title: '<#= prop.Name #>'
+
+						<# if(prop.TypeName.Contains("DateTime")) { #>
+						,
+						type: 'date',
+						displayFormat: 'yy-mm-dd'
+						<# } #>
+
+						<# if(prop.TypeName.Contains("bool")) { #>
+						,
+						type: 'checkbox',
+						defaultValue: 'true',
+						values: { 'false': 'No', 'true': 'Yes' }
+						<# } #>
+
+					}
+				<#
+					}
+				#>
+
+				<# foreach (var fk in foreignKeys)
+					{
+				#>
+					,
+
+					<#= fk.Name #>: {
+						title: '<#= fkNames[fk.Name] #>',
+						options: '@Url.Action("../<#= fkNames[fk.Name] #>/GetAsOptions")',
+						display: function (data) {
+							return data.record.<#= fkNames[fk.Name] #>.Name;
+						}
+					}
+				<#
+					}
+				#>				
+            },
+            recordUpdated: function (event, data) {
+                // Due to a bug in jTable, the updated record is not completely refreshed on the screen.
+                // As a workaround we need to reload the table.  
+                setTimeout(function () { $('#<#= Model.EntityName #>TableContainer').jtable('reload'); }, 250);
+            }
+        });
+
+        //Re-load records when filtering
+        $('#FilterButton').click(function (e) {
+            e.preventDefault();
+            $('#<#= Model.EntityName #>TableContainer').jtable('load', {
+                filterFieldName: $('#filterFieldName').val(),
+                filterFieldValue: $('#filterFieldValue').val()
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#FilterButton').click();
+    });
+
+</script>

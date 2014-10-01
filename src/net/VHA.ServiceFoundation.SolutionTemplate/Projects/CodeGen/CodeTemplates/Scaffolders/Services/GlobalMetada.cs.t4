@@ -1,0 +1,3 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="asax" #>
+<%@ Application Codebehind="Global.asax.cs" Inherits="Services.Global" Language="C#" %>

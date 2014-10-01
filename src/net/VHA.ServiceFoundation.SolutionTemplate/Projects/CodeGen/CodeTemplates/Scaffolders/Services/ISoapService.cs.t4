@@ -1,0 +1,47 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="gen.cs" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+using System.ServiceModel;
+using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF;
+using VHA.ServiceFoundation;
+using VHA.ServiceFoundation.ExceptionManagement;
+using <#=Model.MessagesNamespace#>.<#=Model.EntityName#>;
+
+namespace <#=Model.ServiceNamespace#>
+{
+    [ServiceContract]
+    [ExceptionShielding("WCF Exception Shielding")]
+    public partial interface ISoap<#=Model.EntityName#>Service
+    {
+        [OperationContract]
+        [ApplyDataContractResolver]
+        [FaultContract(typeof(BusinessServiceFault))]
+        [FaultContract(typeof(ServiceValidationFault))]
+        <#=Model.EntityName#>GetAllResponse GetAll(<#=Model.EntityName#>GetAllRequest request);
+
+        [OperationContract]
+        [ApplyDataContractResolver]
+        [FaultContract(typeof(BusinessServiceFault))]
+        [FaultContract(typeof(ServiceValidationFault))]
+        <#=Model.EntityName#>GetWithCriteriaResponse GetWithCriteria(<#=Model.EntityName#>GetWithCriteriaRequest request);
+
+        [OperationContract]
+        [ApplyDataContractResolver]
+        [FaultContract(typeof(BusinessServiceFault))]
+        [FaultContract(typeof(ServiceValidationFault))]
+        <#=Model.EntityName#>GetByIdResponse GetById(<#=Model.EntityName#>GetByIdRequest request);
+
+        [OperationContract]
+        [ApplyDataContractResolver]
+        [FaultContract(typeof(BusinessServiceFault))]
+        [FaultContract(typeof(ServiceValidationFault))]
+        <#=Model.EntityName#>AddOrUpdateResponse AddOrUpdate(<#=Model.EntityName#>AddOrUpdateRequest request);
+
+        [OperationContract]
+        [FaultContract(typeof(BusinessServiceFault))]
+        [FaultContract(typeof(ServiceValidationFault))]
+        <#=Model.EntityName#>DeleteResponse Delete(<#=Model.EntityName#>DeleteRequest request);
+    }
+}
+
+

@@ -1,0 +1,228 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>WebUI</Name>
+    <Description>Sample Web UI for solution based on VHA.ServiceFoundation</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>WebUI</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="WebUI.csproj" File="WebUI.csproj" ReplaceParameters="true">
+      <Folder Name="App_Data" TargetFolderName="App_Data" />
+      <Folder Name="App_Start" TargetFolderName="App_Start">
+        <ProjectItem ReplaceParameters="true" TargetFileName="FilterConfig.cs">FilterConfig.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RouteConfig.cs">RouteConfig.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="WebApiConfig.cs">WebApiConfig.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Content" TargetFolderName="Content">
+        <Folder Name="images" TargetFolderName="images">
+          <Folder Name="Misc" TargetFolderName="Misc">
+            <ProjectItem ReplaceParameters="false" TargetFileName="note.png">note.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="phone.png">phone.png</ProjectItem>
+          </Folder>
+          <Folder Name="Themes" TargetFolderName="Themes">
+            <ProjectItem ReplaceParameters="false" TargetFileName="blue.png">blue.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="green.png">green.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="purple.png">purple.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="red.png">red.png</ProjectItem>
+          </Folder>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Site.css">Site.css</ProjectItem>
+        <Folder Name="themes" TargetFolderName="themes">
+          <Folder Name="base" TargetFolderName="base">
+            <Folder Name="images" TargetFolderName="images">
+              <ProjectItem ReplaceParameters="false" TargetFileName="abstract-background-2.jpg">abstract-background-2.jpg</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="abstract-background.jpg">abstract-background.jpg</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_flat_0_aaaaaa_40x100.png">ui-bg_flat_0_aaaaaa_40x100.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_flat_75_ffffff_40x100.png">ui-bg_flat_75_ffffff_40x100.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_55_fbf9ee_1x400.png">ui-bg_glass_55_fbf9ee_1x400.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_65_ffffff_1x400.png">ui-bg_glass_65_ffffff_1x400.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_75_dadada_1x400.png">ui-bg_glass_75_dadada_1x400.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_75_e6e6e6_1x400.png">ui-bg_glass_75_e6e6e6_1x400.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_95_fef1ec_1x400.png">ui-bg_glass_95_fef1ec_1x400.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_highlight-soft_75_cccccc_1x100.png">ui-bg_highlight-soft_75_cccccc_1x100.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_222222_256x240.png">ui-icons_222222_256x240.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_2e83ff_256x240.png">ui-icons_2e83ff_256x240.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_454545_256x240.png">ui-icons_454545_256x240.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_888888_256x240.png">ui-icons_888888_256x240.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_cd0a0a_256x240.png">ui-icons_cd0a0a_256x240.png</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery-ui.css">jquery-ui.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.accordion.css">jquery.ui.accordion.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.all.css">jquery.ui.all.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.autocomplete.css">jquery.ui.autocomplete.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.base.css">jquery.ui.base.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.button.css">jquery.ui.button.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.core.css">jquery.ui.core.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.datepicker.css">jquery.ui.datepicker.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.dialog.css">jquery.ui.dialog.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.progressbar.css">jquery.ui.progressbar.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.resizable.css">jquery.ui.resizable.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.selectable.css">jquery.ui.selectable.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.slider.css">jquery.ui.slider.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.tabs.css">jquery.ui.tabs.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.ui.theme.css">jquery.ui.theme.css</ProjectItem>
+          </Folder>
+          <Folder Name="redmond" TargetFolderName="redmond">
+            <Folder Name="images" TargetFolderName="images">
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_flat_0_aaaaaa_40x100.png">ui-bg_flat_0_aaaaaa_40x100.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_flat_55_fbec88_40x100.png">ui-bg_flat_55_fbec88_40x100.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_75_d0e5f5_1x400.png">ui-bg_glass_75_d0e5f5_1x400.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_85_dfeffc_1x400.png">ui-bg_glass_85_dfeffc_1x400.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_95_fef1ec_1x400.png">ui-bg_glass_95_fef1ec_1x400.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_gloss-wave_55_5c9ccc_500x100.png">ui-bg_gloss-wave_55_5c9ccc_500x100.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_inset-hard_100_f5f8f9_1x100.png">ui-bg_inset-hard_100_f5f8f9_1x100.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_inset-hard_100_fcfdfd_1x100.png">ui-bg_inset-hard_100_fcfdfd_1x100.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_217bc0_256x240.png">ui-icons_217bc0_256x240.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_2e83ff_256x240.png">ui-icons_2e83ff_256x240.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_469bdd_256x240.png">ui-icons_469bdd_256x240.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_6da8d5_256x240.png">ui-icons_6da8d5_256x240.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_cd0a0a_256x240.png">ui-icons_cd0a0a_256x240.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_d8e7f3_256x240.png">ui-icons_d8e7f3_256x240.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_f9bd01_256x240.png">ui-icons_f9bd01_256x240.png</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery-ui-1.8.16.custom.css">jquery-ui-1.8.16.custom.css</ProjectItem>
+          </Folder>
+        </Folder>
+      </Folder>
+      <Folder Name="Controllers" TargetFolderName="Controllers" />
+      <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax">Global.asax</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax.cs">Global.asax.cs</ProjectItem>
+      <Folder Name="Models" TargetFolderName="Models" />
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="ModelValidation" TargetFolderName="ModelValidation">
+        <ProjectItem ReplaceParameters="false" TargetFileName="Readme.txt">Readme.txt</ProjectItem>
+      </Folder>
+      <Folder Name="Communication" TargetFolderName="Communication">
+        <ProjectItem ReplaceParameters="false" TargetFileName="ServiceClient.cs">ServiceClient.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Scripts" TargetFolderName="Scripts">
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-1.4.4-vsdoc.js">jquery-1.4.4-vsdoc.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-1.4.4.js">jquery-1.4.4.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-1.4.4.min.js">jquery-1.4.4.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-1.6.4.min.js">jquery-1.6.4.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-ui-1.8.16.custom.min.js">jquery-ui-1.8.16.custom.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-ui.js">jquery-ui.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-ui.min.js">jquery-ui.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery.unobtrusive-ajax.js">jquery.unobtrusive-ajax.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery.unobtrusive-ajax.min.js">jquery.unobtrusive-ajax.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate-vsdoc.js">jquery.validate-vsdoc.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.js">jquery.validate.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.min.js">jquery.validate.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.unobtrusive.js">jquery.validate.unobtrusive.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.unobtrusive.min.js">jquery.validate.unobtrusive.min.js</ProjectItem>
+        <Folder Name="jtable" TargetFolderName="jtable">
+          <Folder Name="extensions" TargetFolderName="extensions">
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.jtable.aspnetpagemethods.js">jquery.jtable.aspnetpagemethods.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.jtable.aspnetpagemethods.min.js">jquery.jtable.aspnetpagemethods.min.js</ProjectItem>
+          </Folder>
+          <Folder Name="external" TargetFolderName="external">
+            <ProjectItem ReplaceParameters="true" TargetFileName="json2.js">json2.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="json2.min.js">json2.min.js</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="jquery.jtable.js">jquery.jtable.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="jquery.jtable.min.js">jquery.jtable.min.js</ProjectItem>
+          <Folder Name="themes" TargetFolderName="themes">
+            <Folder Name="lightcolor" TargetFolderName="lightcolor">
+              <ProjectItem ReplaceParameters="false" TargetFileName="bg-thead.png">bg-thead.png</ProjectItem>
+              <Folder Name="blue" TargetFolderName="blue">
+                <ProjectItem ReplaceParameters="true" TargetFileName="jtable.css">jtable.css</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="loading.gif">loading.gif</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="false" TargetFileName="close.png">close.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="column-asc.png">column-asc.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="column-desc.png">column-desc.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="column-sortable.png">column-sortable.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="delete.png">delete.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="edit.png">edit.png</ProjectItem>
+              <Folder Name="gray" TargetFolderName="gray">
+                <ProjectItem ReplaceParameters="true" TargetFileName="jtable.css">jtable.css</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="loading.gif">loading.gif</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="loading2.gif">loading2.gif</ProjectItem>
+              </Folder>
+              <Folder Name="green" TargetFolderName="green">
+                <ProjectItem ReplaceParameters="true" TargetFileName="jtable.css">jtable.css</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="loading.gif">loading.gif</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jtable_lightcolor_base.css">jtable_lightcolor_base.css</ProjectItem>
+              <Folder Name="orange" TargetFolderName="orange">
+                <ProjectItem ReplaceParameters="true" TargetFileName="jtable.css">jtable.css</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="loading.gif">loading.gif</ProjectItem>
+              </Folder>
+              <Folder Name="red" TargetFolderName="red">
+                <ProjectItem ReplaceParameters="true" TargetFileName="jtable.css">jtable.css</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="loading.gif">loading.gif</ProjectItem>
+              </Folder>
+            </Folder>
+            <Folder Name="standard" TargetFolderName="standard">
+              <Folder Name="blue" TargetFolderName="blue">
+                <ProjectItem ReplaceParameters="false" TargetFileName="header-bg.gif">header-bg.gif</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="jtable_blue.css">jtable_blue.css</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="loading.gif">loading.gif</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="title-bg.png">title-bg.png</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="false" TargetFileName="close.png">close.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="column-asc.png">column-asc.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="column-desc.png">column-desc.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="column-sortable.png">column-sortable.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="delete.png">delete.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="edit.png">edit.png</ProjectItem>
+              <Folder Name="green" TargetFolderName="green">
+                <ProjectItem ReplaceParameters="false" TargetFileName="header-bg.gif">header-bg.gif</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="jtable_green.css">jtable_green.css</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="loading.gif">loading.gif</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="title-bg.png">title-bg.png</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jtable_standard_base.css">jtable_standard_base.css</ProjectItem>
+              <Folder Name="purple" TargetFolderName="purple">
+                <ProjectItem ReplaceParameters="true" TargetFileName="jtable_purple.css">jtable_purple.css</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="loading.gif">loading.gif</ProjectItem>
+              </Folder>
+              <Folder Name="red" TargetFolderName="red">
+                <ProjectItem ReplaceParameters="false" TargetFileName="header-bg.gif">header-bg.gif</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="jtable_red.css">jtable_red.css</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="loading.gif">loading.gif</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="title-bg.png">title-bg.png</ProjectItem>
+              </Folder>
+            </Folder>
+          </Folder>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jtablesite.js">jtablesite.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MicrosoftAjax.debug.js">MicrosoftAjax.debug.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MicrosoftAjax.js">MicrosoftAjax.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MicrosoftMvcAjax.debug.js">MicrosoftMvcAjax.debug.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MicrosoftMvcAjax.js">MicrosoftMvcAjax.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MicrosoftMvcValidation.debug.js">MicrosoftMvcValidation.debug.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MicrosoftMvcValidation.js">MicrosoftMvcValidation.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="modernizr-1.7.min.js">modernizr-1.7.min.js</ProjectItem>
+        <Folder Name="validationEngine" TargetFolderName="validationEngine">
+          <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validationEngine-en.js">jquery.validationEngine-en.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validationEngine.js">jquery.validationEngine.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="validationEngine.jquery.css">validationEngine.jquery.css</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Service References" TargetFolderName="Service References" />
+      <Folder Name="Views" TargetFolderName="Views">
+        <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>
+        <Folder Name="Shared" TargetFolderName="Shared">
+          <ProjectItem ReplaceParameters="true" TargetFileName="_Layout.cshtml">_Layout.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Error.cshtml">Error.cshtml</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Web.Debug.config">Web.Debug.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Web.Release.config">Web.Release.config</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

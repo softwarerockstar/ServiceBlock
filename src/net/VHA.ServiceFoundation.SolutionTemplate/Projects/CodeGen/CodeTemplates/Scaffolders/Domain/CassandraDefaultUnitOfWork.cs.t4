@@ -1,0 +1,25 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="gen.cs" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using VHA.ServiceFoundation.DataProviders;
+
+namespace <#=Model.Namespace#>
+{
+    public partial class <#=Model.ClassName#> : CassandraUnitOfWorkBase
+    {
+        public <#=Model.ClassName#>()
+            : this("Name=<#=Model.ConnectionName#>")
+        {
+        }
+
+        public <#=Model.ClassName#>(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        {
+        }
+    }
+}

@@ -1,0 +1,50 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
+  <TemplateData>
+    <Name>VHA Service Foundation Solution</Name>
+    <Description>VHA Service Foundation Application</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>VHA Service Foundation App</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection>
+    	<SolutionFolder Name="Client">
+		<ProjectTemplateLink ProjectName="WebUI">
+		    WebUI\MyTemplate.vstemplate
+		</ProjectTemplateLink>        
+	</SolutionFolder>		
+	<SolutionFolder Name="Server">
+		<ProjectTemplateLink ProjectName="Domain">
+		    Domain\MyTemplate.vstemplate
+		</ProjectTemplateLink>
+		<ProjectTemplateLink ProjectName="DataActivities">
+		    DataActivities\MyTemplate.vstemplate
+		</ProjectTemplateLink>
+		<ProjectTemplateLink ProjectName="Orchestrations">
+		    Orchestrations\MyTemplate.vstemplate
+		</ProjectTemplateLink>
+		<ProjectTemplateLink ProjectName="Services">
+		    Services\MyTemplate.vstemplate
+		</ProjectTemplateLink>
+	</SolutionFolder>
+    	<SolutionFolder Name="CodeGen">
+		<ProjectTemplateLink ProjectName="VHA.CodeGen.ServiceFoundation">
+		    CodeGen\MyTemplate.vstemplate
+		</ProjectTemplateLink>        
+	</SolutionFolder>			
+     </ProjectCollection>
+    </TemplateContent>
+<!--    
+  <WizardExtension>
+    <Assembly>VHA.ServiceFoundation.TemplateInstallerWizard, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=null</Assembly>
+    <FullClassName>VHA.ServiceFoundation.TemplateInstallerWizard.InstallWizard</FullClassName>
+  </WizardExtension>    
+-->  
+</VSTemplate>

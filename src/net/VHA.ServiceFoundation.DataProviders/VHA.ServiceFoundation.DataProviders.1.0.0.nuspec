@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>VHA.ServiceFoundation.DataProviders</id>
+        <version>2.0.20</version>
+        <title>VHA.ServiceFoundation.DataProviders</title>
+        <authors>mharoon</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Data providers for VHA.ServiceFoundation.</description>
+        <summary>Data providers for VHA.ServiceFoundation.</summary>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+                <dependency id="CassandraCSharpDriver" version="1.0.1" />
+                <dependency id="EntityFramework" version="5.0.0" />
+                <dependency id="VHA.ServiceFoundation" version="2.0.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\VHA.ServiceFoundation.DataProviders.dll" target="lib\net45\VHA.ServiceFoundation.DataProviders.dll" />
+    </files>
+</package>

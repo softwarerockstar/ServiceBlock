@@ -1,0 +1,20 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="gen.cs" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+using VHA.ServiceFoundation;
+using VHA.ServiceFoundation.ServiceModel;
+
+namespace <#=Model.Namespace#>.<#=Model.EntityName#>
+{
+    public class <#=Model.EntityName#>GetWithCriteriaRequest : RequestBase
+    {
+        [DataMember]
+        public Criteria Criteria { get; set; }
+    }
+}

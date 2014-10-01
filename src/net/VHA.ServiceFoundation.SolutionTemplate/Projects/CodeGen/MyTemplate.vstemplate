@@ -1,0 +1,88 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>CodeGen</Name>
+    <Description>Code generation templates for solution based on VHA.ServiceFoundation</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>CodeGen</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="VHA.CodeGen.ServiceFoundation.csproj" File="VHA.CodeGen.ServiceFoundation.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <Folder Name="CodeTemplates" TargetFolderName="CodeTemplates">
+        <Folder Name="Scaffolders" TargetFolderName="Scaffolders">
+          <Folder Name="DataActivities" TargetFolderName="DataActivities">
+            <ProjectItem ReplaceParameters="false" TargetFileName="DataActivities.ps1">DataActivities.ps1</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Delete.cs.t4">Delete.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetAll.cs.t4">GetAll.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetById.cs.t4">GetById.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetWithCriteria.cs.t4">GetWithCriteria.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="InsertOrUpdate.cs.t4">InsertOrUpdate.cs.t4</ProjectItem>
+          </Folder>
+          <Folder Name="Domain" TargetFolderName="Domain">
+            <ProjectItem ReplaceParameters="false" TargetFileName="AddOrUpdateRequest.cs.t4">AddOrUpdateRequest.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="AddOrUpdateResponse.cs.t4">AddOrUpdateResponse.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="DeleteRequest.cs.t4">DeleteRequest.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="DeleteResponse.cs.t4">DeleteResponse.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Domain.ps1">Domain.ps1</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetAllRequest.cs.t4">GetAllRequest.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetAllResponse.cs.t4">GetAllResponse.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetByIdRequest.cs.t4">GetByIdRequest.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetByIdResponse.cs.t4">GetByIdResponse.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetWithCriteriaRequest.cs.t4">GetWithCriteriaRequest.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetWithCriteriaResponse.cs.t4">GetWithCriteriaResponse.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="EfDefaultUnitOfWork.cs.t4">EfDefaultUnitOfWork.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="CassandraDefaultUnitOfWork.cs.t4">CassandraDefaultUnitOfWork.cs.t4</ProjectItem>
+          </Folder>
+          <Folder Name="EnterpriseApp" TargetFolderName="EnterpriseApp">
+            <ProjectItem ReplaceParameters="false" TargetFileName="EnterpriseApp.ps1">EnterpriseApp.ps1</ProjectItem>
+          </Folder>
+          <Folder Name="Orchestrations" TargetFolderName="Orchestrations">
+            <ProjectItem ReplaceParameters="false" TargetFileName="AddOrUpdate.xaml.t4">AddOrUpdate.xaml.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Delete.xaml.t4">Delete.xaml.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetAll.xaml.t4">GetAll.xaml.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetById.xaml.t4">GetById.xaml.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GetWithCriteria.xaml.t4">GetWithCriteria.xaml.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Orchestrations.ps1">Orchestrations.ps1</ProjectItem>
+          </Folder>
+          <Folder Name="Services" TargetFolderName="Services">
+            <ProjectItem ReplaceParameters="false" TargetFileName="GlobalCodeBehind.cs.t4">GlobalCodeBehind.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GlobalMetada.cs.t4">GlobalMetada.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="IRestService.cs.t4">IRestService.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="ISoapService.cs.t4">ISoapService.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="RestRoutes.cs.t4">RestRoutes.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="RestService.cs.t4">RestService.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="SoapRoutes.cs.t4">SoapRoutes.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="SoapService.cs.t4">SoapService.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Services.ps1">Services.ps1</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Web.config.t4">Web.config.t4</ProjectItem>
+          </Folder>
+          <Folder Name="WebUI" TargetFolderName="WebUI">
+            <ProjectItem ReplaceParameters="false" TargetFileName="EntityController.cs.t4">EntityController.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="EntityView.cs.t4">EntityView.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Layout.cs.t4">Layout.cs.t4</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="WebUI.ps1">WebUI.ps1</ProjectItem>
+          </Folder>
+        </Folder>
+      </Folder>
+      <Folder Name="Includes" TargetFolderName="Includes">
+        <ProjectItem ReplaceParameters="false" TargetFileName="ConfigurationAccessor.tt">ConfigurationAccessor.tt</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="ConfigurationAccessorExample.tt">ConfigurationAccessorExample.tt</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="Globals.ps1">Globals.ps1</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="ModelProperties.tt">ModelProperties.tt</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ReadMe.txt">ReadMe.txt</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

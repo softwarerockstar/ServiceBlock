@@ -1,0 +1,237 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="gen.cs" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+<#@ include file="..\..\..\Includes\ModelProperties.tt" #>
+<# var camelPK = Char.ToLowerInvariant(Model.PrimaryKeyName[0]) + Model.PrimaryKeyName.Substring(1); #> 
+using System;
+using System.Linq;
+using System.Threading;
+using System.Text;
+using System.Web.Mvc;
+using System.Web.Configuration;
+using WebUI.Communication;
+using <#= Model.Namespace #>.<#=Model.EntityName#>Svc;
+
+namespace <#= Model.Namespace #>.Controllers
+{
+public partial class <#=Model.EntityName#>Controller : Controller
+    {
+        private readonly IServiceClient _repository;
+
+        public <#=Model.EntityName#>Controller()
+        {
+            // Default to REST unless clientProtocol specified as SOAP
+            if (String.Compare(WebConfigurationManager.AppSettings["vhasf:ClientProtocol"], "soap", true) == 0)
+                _repository = new SoapServiceClient<ISoap<#=Model.EntityName#>Service>(new Soap<#=Model.EntityName#>ServiceClient());
+            else
+                _repository = new RestServiceClient<ISoap<#=Model.EntityName#>Service>();
+        }
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult List(
+            string filterFieldName = "",
+            string filterFieldValue = "", 
+            int jtStartIndex = 0, 
+            int jtPageSize = 0, 
+            string jtSorting = null)
+        {
+            try
+            {
+                Thread.Sleep(200);
+
+                Criteria criteria = new Criteria
+                {
+                    PageSize = jtPageSize,
+                    PageNumber = (jtStartIndex / jtPageSize) + 1
+                };
+
+                if (!String.IsNullOrEmpty(jtSorting))
+                {
+                    var sortOptions = jtSorting.Split(' ');
+
+                    criteria.SortFieldName = sortOptions[0];
+
+                    if (sortOptions.Length > 1)
+                        criteria.SortDirection = (sortOptions[1] == "ASC") ?
+                            SortDirection.Asc :
+                            SortDirection.Desc; 
+                }
+
+                if (!String.IsNullOrEmpty(filterFieldValue) && !String.IsNullOrEmpty(filterFieldName))
+                {
+                    criteria.FilterFieldName = filterFieldName;
+                    criteria.FilterFieldValue = filterFieldValue;
+                }
+
+                var request = new <#=Model.EntityName#>GetWithCriteriaRequest { Criteria = criteria };
+
+                var response = _repository.GetWithCriteria
+					<<#=Model.EntityName#>GetWithCriteriaRequest, <#=Model.EntityName#>GetWithCriteriaResponse>(request);
+
+                var toReturn = Json(new
+                {
+                    Result = "OK",
+                    Records = response.Result.Body,
+                    TotalRecordCount = response.Result.TotalCount 
+                });
+
+                return toReturn;
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Json(new
+                {
+                    Result = "ERROR",
+                    Message = String.Format("{0}<br/>Details:{1}", ex.Message, ex.Data["DetailHtml"])
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Result = "ERROR",
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult GetAsOptions()
+        {
+            try
+            {
+                var results = _repository.GetAll
+					<<#=Model.EntityName#>GetAllRequest, <#=Model.EntityName#>GetAllResponse>(new <#=Model.EntityName#>GetAllRequest())
+						.Result
+						.Select(x => new { DisplayText = x.Name, Value = x.<#=Model.EntityName#>Id });
+
+                return Json(new { Result = "OK", Options = results });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Json(new
+                {
+                    Result = "ERROR",
+                    Message = String.Format("{0}<br/>Details:{1}", ex.Message, ex.Data["DetailHtml"])
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Result = "ERROR",
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult Create(<#=Model.EntityName#> entity)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    var sb = new StringBuilder(@"<p>Please correct the following errors:</p><ul>");
+                    var errors = ModelState.Values.SelectMany(v => v.Errors);
+                    foreach (var err in errors) sb.AppendFormat("<li>{0}</li>", err.ErrorMessage);
+                    sb.Append("</ul>");
+                    return Json(new { Result = "ERROR", Message = sb.ToString() });
+                }
+
+                var request = new <#=Model.EntityName#>AddOrUpdateRequest { Entities = new <#=Model.EntityName#>[] { entity } };
+                var response = _repository.Add<<#=Model.EntityName#>AddOrUpdateRequest, <#=Model.EntityName#>AddOrUpdateResponse>(request);
+				return Json(new { Result = "OK", Record = response.Result[0] });
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Json(new
+                {
+                    Result = "ERROR",
+                    Message = String.Format("{0}<br/>Details:{1}", ex.Message, ex.Data["DetailHtml"])
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Result = "ERROR",
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult Update(<#=Model.EntityName#> entity)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    var sb = new StringBuilder(@"<p>Please correct the following errors:</p><ul>");
+                    var errors = ModelState.Values.SelectMany(v => v.Errors);
+                    foreach (var err in errors) sb.AppendFormat("<li>{0}</li>", err.ErrorMessage);
+                    sb.Append("</ul>");
+                    return Json(new { Result = "ERROR", Message = sb.ToString() });
+                }
+
+                var request = new <#=Model.EntityName#>AddOrUpdateRequest { Entities = new <#=Model.EntityName#>[] { entity } };
+                 
+                var response = _repository.Update
+					<<#=Model.EntityName#>AddOrUpdateRequest, <#=Model.EntityName#>AddOrUpdateResponse>(request);
+                
+				return Json(new { Result = "OK", Record = response.Result });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Json(new
+                {
+                    Result = "ERROR",
+                    Message = String.Format("{0}<br/>Details:{1}", ex.Message, ex.Data["DetailHtml"])
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Result = "ERROR",
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult Delete(int <#=camelPK#>)
+        {
+            try
+            {
+                Thread.Sleep(50);
+                var request = new <#=Model.EntityName#>DeleteRequest { IdList = new int[] { <#=camelPK#> } };
+                _repository.Delete<<#=Model.EntityName#>DeleteRequest, <#=Model.EntityName#>DeleteResponse>(request);
+                return Json(new { Result = "OK" });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Json(new
+                {
+                    Result = "ERROR",
+                    Message = String.Format("{0}<br/>Details:{1}", ex.Message, ex.Data["DetailHtml"])
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Result = "ERROR",
+                    Message = ex.Message
+                });
+            }
+        }
+    }
+}

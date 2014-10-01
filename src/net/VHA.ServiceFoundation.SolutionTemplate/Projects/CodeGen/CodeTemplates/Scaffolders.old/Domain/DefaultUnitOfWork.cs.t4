@@ -1,0 +1,47 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="cs" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace <#=Model.Namespace#>
+{
+    public partial class <#=Model.ClassName#> : DbContext, <#=Model.InterfaceName#>
+    {
+        static <#=Model.ClassName#>()
+        {
+            //TODO: this should only be enabled during local development / debugging.
+            //CAUTION: When model changes, this line will drop and recreate database anew deleting all data.
+
+            //Database.SetInitializer<<#=Model.ClassName#>>(new DropCreateDatabaseIfModelChanges<<#=Model.ClassName#>>());           
+        }
+
+        public <#=Model.ClassName#>()
+            : this("Name=<#=Model.EFConnectionName#>")
+        {
+        }
+
+        public <#=Model.ClassName#>(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        {
+            // If lazy loading is enabled all related entities will are always loaded.
+            // We do not want this behavior.  In order to load related entities use LINQ
+            // "Include" method when needed.
+            this.Configuration.LazyLoadingEnabled = false;
+        }
+
+<# foreach (var item in Model.DomainClasses) { #>
+		public IDbSet<<#=item.Key#>> <#=item.Value#> { get; set; }
+<#}#>
+
+
+        public void UpdateEntity<T>(T entity) where T : class
+        {
+            base.Entry(entity).State = System.Data.EntityState.Modified;
+        }
+    }
+}

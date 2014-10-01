@@ -1,0 +1,19 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="cs" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+using VHA.ServiceFoundation.ServiceModel;
+
+namespace <#=Model.Namespace#>.<#=Model.EntityName#>
+{
+    public class <#=Model.EntityName#>GetByIdResponse : ResponseBase
+    {
+        [DataMember]
+        public Models.<#=Model.EntityName#> Result { get; set; }
+    }
+}

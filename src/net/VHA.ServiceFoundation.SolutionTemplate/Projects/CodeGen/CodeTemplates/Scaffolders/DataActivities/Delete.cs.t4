@@ -1,0 +1,30 @@
+<#@ Template Language="C#" HostSpecific="True"  #>
+<#@ Output Extension="gen.cs" #>
+<#@ include file="..\..\..\Includes\ConfigurationAccessor.tt" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Activities;
+using <#=Model.EntityNamespace#>;
+using VHA.ServiceFoundation;
+using VHA.ServiceFoundation.Activities;
+using VHA.ServiceFoundation.Data;
+using System.ComponentModel;
+using System.Data;
+
+namespace <#=Model.Namespace#>.<#=Model.EntityName#>
+{
+    public sealed class Delete : DataActivityBase
+    {
+        [RequiredArgument]
+        public InArgument<int> EntityId { get; set; }
+
+        protected override void Execute(NativeActivityContext context)
+        {
+            var id = EntityId.Get(context);
+            var dataContext = base.GetUnitOfWork<<#=Model.UoWInterfaceName#>>(context);
+            dataContext.Delete<<#=Model.EntityNamespace#>.<#=Model.EntityName#>>(d => d.<#=Model.PrimaryKey#> == id);
+        }
+    }
+}

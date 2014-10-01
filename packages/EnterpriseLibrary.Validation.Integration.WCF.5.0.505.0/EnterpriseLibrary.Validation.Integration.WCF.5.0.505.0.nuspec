@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>EnterpriseLibrary.Validation.Integration.WCF</id>
+    <version>5.0.505.0</version>
+    <title>Enterprise Library 5.0 - Validation Application Block Integration with WCF</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.opensource.org/licenses/ms-pl</licenseUrl>
+    <projectUrl>http://msdn.microsoft.com/en-us/library/ff664526(PandP.50).aspx</projectUrl>
+    <iconUrl>http://nuget.org/Media/Default/Packages/Unity/2.0/entlib_new_icon_100x100.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This component allows the Enterprise Library Validation Application Block to integrate with WCF.</description>
+    <summary>This component allows the Enterprise Library Validation Application Block to integrate with WCF.</summary>
+    <copyright>© 2011 Microsoft Corporation</copyright>
+    <tags>entlib Enterprise Library validation validator vab WCF service LOB</tags>
+    <dependencies>
+      <dependency id="EnterpriseLibrary.Validation" version="5.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="mscorlib" targetFramework=".NETFramework3.5, .NETFramework4.0" />
+      <frameworkAssembly assemblyName="System.ServiceModel" targetFramework=".NETFramework3.5, .NETFramework4.0" />
+    </frameworkAssemblies>
+    <references>
+      <reference file="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.dll" />
+    </references>
+  </metadata>
+</package>
