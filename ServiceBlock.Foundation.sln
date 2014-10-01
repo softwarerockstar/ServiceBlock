@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBlock.Foundation", "src\net\VHA.ServiceFoundation\ServiceBlock.Foundation.csproj", "{D687C7B8-E0D7-40D8-8229-07428BAC123E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBlock.Foundation", "src\net\ServiceBlock.Foundation\ServiceBlock.Foundation.csproj", "{D687C7B8-E0D7-40D8-8229-07428BAC123E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBlock.Foundation.DataProviders", "src\net\VHA.ServiceFoundation.DataProviders\ServiceBlock.Foundation.DataProviders.csproj", "{7EC31F45-3123-44CE-9699-C44FC811E373}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBlock.Foundation.DataProviders", "src\net\ServiceBlock.Foundation.DataProviders\ServiceBlock.Foundation.DataProviders.csproj", "{7EC31F45-3123-44CE-9699-C44FC811E373}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E729231F-2ACB-43A8-BC44-F7D2502A8F51}"
 	ProjectSection(SolutionItems) = preProject
