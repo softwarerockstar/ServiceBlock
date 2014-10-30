@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>ServiceBlock.Foundation</id>
+        <version>2.0.17</version>
+        <authors>MHAROON</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A framework for building SOA services.</description>
+        <summary>SOA Enterprise Framework</summary>
+        <releaseNotes>Added support for NoSQL (Cassandra)</releaseNotes>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+                <dependency id="EntityFramework" version="5.0.0" />
+                <dependency id="EnterpriseLibrary.Common" version="5.0.505.0" />
+                <dependency id="EnterpriseLibrary.ExceptionHandling" version="5.0.505.0" />
+                <dependency id="EnterpriseLibrary.ExceptionHandling.Logging" version="5.0.505.0" />
+                <dependency id="EnterpriseLibrary.ExceptionHandling.WCF" version="5.0.505.0" />
+                <dependency id="EnterpriseLibrary.Logging" version="5.0.505.1" />
+                <dependency id="EnterpriseLibrary.Validation" version="5.0.505.0" />
+                <dependency id="EnterpriseLibrary.Validation.Integration.WCF" version="5.0.505.0" />
+                <dependency id="Unity" version="2.1.505.2" />
+                <dependency id="Unity.Interception" version="2.1.505.2" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\ServiceBlock.Foundation.dll" target="lib\net45\ServiceBlock.Foundation.dll" />
+    </files>
+</package>
