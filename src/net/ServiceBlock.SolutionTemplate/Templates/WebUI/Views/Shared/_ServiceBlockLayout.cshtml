@@ -1,0 +1,38 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/redmond/jquery-ui-1.8.16.custom.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/jtable/themes/lightcolor/blue/jtable.min.css")" rel="stylesheet" type="text/css" />
+
+    @RenderSection("CssImport", false)
+
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/jtablesite.js")" type="text/javascript"></script>
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jtable/jquery.jtable.min.js")"></script>
+    
+    @RenderSection("JavascriptImport", false)
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="menuLinks" align="right">
+                @Html.Action("Index", "MenuLinks")
+            </div>
+        </div>
+        <div id="main">
+            @RenderBody()
+        </div>
+        <div id="footer">
+        </div>
+    </div>
+</body>
+</html>
+

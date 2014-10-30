@@ -1,0 +1,43 @@
+﻿<#@ template language="C#" hostspecific="False" #>
+<#@ output Extension="gen.cs" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter name="Model" type="ServiceBlock.Scaffolder.Models.CodeGenModel" #>
+using System;
+using System.Activities;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
+using ServiceBlock.Foundation;
+using ServiceBlock.Foundation.Activities;
+using ServiceBlock.Foundation.Data;
+using <#=Model.ModelNamespace#>;
+
+namespace <#=Model.DataActivityNamespace#>.<#=Model.EntityName#>
+{
+    public partial class GetById : DataActivityBase<<#=Model.ModelNamespace#>.<#=Model.EntityName#>>
+    {
+        [RequiredArgument]
+        public InArgument<int> EntityId { get; set; }
+
+        public InArgument<string> IncludeProperties { get; set; }
+
+        protected override void ExecuteActivity(NativeActivityContext context)
+        {
+            var dataContext = base.GetUnitOfWork<<#=Model.UoWInterfaceName#>>(context);
+
+            var id = EntityId.Get(context);
+            var includProperties = IncludeProperties.Get(context);
+
+            var toReturn = dataContext.GetWithSelector<<#=Model.ModelNamespace#>.<#=Model.EntityName#>>
+                (c => c.<#=Model.EntityName#>Id == id, includProperties).FirstOrDefault();
+
+            Result.Set(context, toReturn);
+        }
+    }
+}

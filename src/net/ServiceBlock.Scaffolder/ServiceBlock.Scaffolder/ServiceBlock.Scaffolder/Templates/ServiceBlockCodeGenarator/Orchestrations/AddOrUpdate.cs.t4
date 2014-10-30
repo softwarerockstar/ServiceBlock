@@ -1,0 +1,184 @@
+﻿<#@ template language="C#" hostspecific="False" #>
+<#@ output Extension="gen.xaml" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="Model" type="ServiceBlock.Scaffolder.Models.CodeGenModel" #>
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="<#=Model.OrchestrationNamespace#>.<#=Model.EntityName#>.AddOrUpdate"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:dac="clr-namespace:<#=Model.DataNamespace#>.<#=Model.EntityName#>;assembly=<#=Model.DataAssemblyName#>"
+ xmlns:ddm="clr-namespace:<#=Model.ModelNamespace#>;assembly=<#=Model.DomainAssemblyName#>"
+ xmlns:local="clr-namespace:<#=Model.OrchestrationNamespace#>.<#=Model.EntityName#>"
+ xmlns:dmc="clr-namespace:<#=Model.MessagesNamespace#>.<#=Model.EntityName#>;assembly=<#=Model.DomainAssemblyName#>"
+ xmlns:vsa="clr-namespace:ServiceBlock.Foundation.Activities;assembly=ServiceBlock.Foundation"
+ xmlns:ded="clr-namespace:ServiceBlock.Foundation.Data;assembly=ServiceBlock.Foundation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="request" Type="InArgument(dmc:<#=Model.EntityName#>AddOrUpdateRequest)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="response" Type="OutArgument(dmc:<#=Model.EntityName#>AddOrUpdateResponse)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="unitOfWork" Type="InArgument(ded:<#=Model.UoWInterfaceName#>)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef><#=Model.OrchestrationNamespace#>.<#=Model.EntityName#>.AddOrUpdate_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>Microsoft.Practices.EnterpriseLibrary.Validation</x:String>
+      <x:String><#=Model.MessagesNamespace#>.<#=Model.EntityName#></x:String>
+      <x:String>System.Data.Entity</x:String>
+      <x:String>System.ServiceModel</x:String>
+      <x:String><#=Model.ModelNamespace#></x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>EntityFramework</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.Common</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.ExceptionHandling</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.Logging</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.Validation</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.ServiceLocation</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.Configuration</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.Interception</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.Interception.Configuration</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.DataAnnotations</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Management</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>ServiceBlock.Foundation</AssemblyReference>
+      <AssemblyReference><#=Model.DataAssemblyName#></AssemblyReference>
+      <AssemblyReference><#=Model.DomainAssemblyName#></AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference><#=Model.WorkflowAssemblyName#></AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <vsa:DataContextActivity sap2010:WorkflowViewState.IdRef="DataContextActivity_3">
+    <vsa:DataContextActivity.Activities>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="dmc:<#=Model.EntityName#>AddOrUpdateResponse">
+            <mca:CSharpReference x:TypeArguments="dmc:<#=Model.EntityName#>AddOrUpdateResponse">response</mca:CSharpReference>
+          </OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="dmc:<#=Model.EntityName#>AddOrUpdateResponse">
+            <mca:CSharpValue x:TypeArguments="dmc:<#=Model.EntityName#>AddOrUpdateResponse">new <#=Model.EntityName#>AddOrUpdateResponse()</mca:CSharpValue>
+          </InArgument>
+        </Assign.Value>
+      </Assign>
+      <ForEach x:TypeArguments="ddm:<#=Model.EntityName#>" DisplayName="ForEach&lt;<#=Model.EntityName#>&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_3">
+        <ForEach.Values>
+          <InArgument x:TypeArguments="scg:IEnumerable(ddm:<#=Model.EntityName#>)">
+            <mca:CSharpValue x:TypeArguments="scg:IEnumerable(ddm:<#=Model.EntityName#>)">request.Entities</mca:CSharpValue>
+          </InArgument>
+        </ForEach.Values>
+        <ActivityAction x:TypeArguments="ddm:<#=Model.EntityName#>">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ddm:<#=Model.EntityName#>" Name="entity" />
+          </ActivityAction.Argument>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <dac:InsertOrUpdate sap2010:WorkflowViewState.IdRef="InsertOrUpdate_3">
+              <dac:InsertOrUpdate.Entity>
+                <InArgument x:TypeArguments="ddm:<#=Model.EntityName#>">
+                  <mca:CSharpValue x:TypeArguments="ddm:<#=Model.EntityName#>">entity</mca:CSharpValue>
+                </InArgument>
+              </dac:InsertOrUpdate.Entity>
+              <dac:InsertOrUpdate.Result>
+                <OutArgument x:TypeArguments="ddm:<#=Model.EntityName#>">
+                  <mca:CSharpReference x:TypeArguments="ddm:<#=Model.EntityName#>">addResult</mca:CSharpReference>
+                </OutArgument>
+              </dac:InsertOrUpdate.Result>
+            </dac:InsertOrUpdate>
+			<vsa:SaveChanges sap2010:WorkflowViewState.IdRef="SaveChanges_1">
+			<vsa:SaveChanges.RowCount>
+				<OutArgument x:TypeArguments="x:Int32">
+				<mca:CSharpReference x:TypeArguments="x:Int32">response.RowCount</mca:CSharpReference>
+				</OutArgument>
+			</vsa:SaveChanges.RowCount>
+			</vsa:SaveChanges>
+            <local:GetById>
+              <local:GetById.request>
+                <InArgument x:TypeArguments="dmc:<#=Model.EntityName#>GetByIdRequest">
+                  <mca:CSharpValue x:TypeArguments="dmc:<#=Model.EntityName#>GetByIdRequest">new <#=Model.MessagesNamespace#>.<#=Model.EntityName#>.<#=Model.EntityName#>GetByIdRequest { Id = addResult.<#=Model.EntityName#>Id }</mca:CSharpValue>
+                </InArgument>
+              </local:GetById.request>
+              <local:GetById.response>
+                <OutArgument x:TypeArguments="dmc:<#=Model.EntityName#>GetByIdResponse">
+                  <mca:CSharpReference x:TypeArguments="dmc:<#=Model.EntityName#>GetByIdResponse">getResponse</mca:CSharpReference>
+                </OutArgument>
+              </local:GetById.response>
+              <local:GetById.unitOfWork>
+                <InArgument x:TypeArguments="ded:<#=Model.UoWInterfaceName#>">
+                  <mca:CSharpValue x:TypeArguments="ded:<#=Model.UoWInterfaceName#>">unitOfWork</mca:CSharpValue>
+                </InArgument>
+              </local:GetById.unitOfWork>
+              <sap2010:WorkflowViewState.IdRef>GetById_1</sap2010:WorkflowViewState.IdRef>
+            </local:GetById>
+            <AddToCollection x:TypeArguments="ddm:<#=Model.EntityName#>" DisplayName="AddToCollection&lt;<#=Model.EntityName#>&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3">
+              <AddToCollection.Item>
+                <InArgument x:TypeArguments="ddm:<#=Model.EntityName#>">
+                  <mca:CSharpValue x:TypeArguments="ddm:<#=Model.EntityName#>">getResponse.Result</mca:CSharpValue>
+                </InArgument>
+              </AddToCollection.Item>
+              <InArgument x:TypeArguments="scg:ICollection(ddm:<#=Model.EntityName#>)">
+                <mca:CSharpValue x:TypeArguments="scg:ICollection(ddm:<#=Model.EntityName#>)">response.Result</mca:CSharpValue>
+              </InArgument>
+            </AddToCollection>
+          </Sequence>
+        </ActivityAction>
+      </ForEach>
+    </vsa:DataContextActivity.Activities>
+    <vsa:DataContextActivity.UnitOfWork>
+      <InArgument x:TypeArguments="ded:IUnitOfWork">
+        <mca:CSharpValue x:TypeArguments="ded:IUnitOfWork">unitOfWork</mca:CSharpValue>
+      </InArgument>
+    </vsa:DataContextActivity.UnitOfWork>
+    <vsa:DataContextActivity.Variables>
+      <Variable x:TypeArguments="ddm:<#=Model.EntityName#>" Name="addResult" />
+      <Variable x:TypeArguments="dmc:<#=Model.EntityName#>GetByIdResponse" Name="getResponse" />
+    </vsa:DataContextActivity.Variables>
+  </vsa:DataContextActivity>
+</Activity>

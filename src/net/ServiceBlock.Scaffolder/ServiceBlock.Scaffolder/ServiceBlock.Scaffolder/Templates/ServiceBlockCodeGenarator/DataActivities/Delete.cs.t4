@@ -1,0 +1,35 @@
+﻿<#@ template language="C#" hostspecific="False" #>
+<#@ output Extension="gen.cs" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter name="Model" type="ServiceBlock.Scaffolder.Models.CodeGenModel" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Activities;
+using <#=Model.ModelNamespace#>;
+using ServiceBlock.Foundation;
+using ServiceBlock.Foundation.Activities;
+using ServiceBlock.Foundation.Data;
+using System.ComponentModel;
+using System.Data;
+
+namespace <#=Model.DataActivityNamespace#>.<#=Model.EntityName#>
+{
+    public partial class Delete : DataActivityBase
+    {
+        [RequiredArgument]
+        public InArgument<int> EntityId { get; set; }
+
+        protected override void ExecuteActivity(NativeActivityContext context)
+        {
+            var id = EntityId.Get(context);
+            var dataContext = base.GetUnitOfWork<<#=Model.UoWInterfaceName#>>(context);
+            dataContext.Delete<<#=Model.ModelNamespace#>.<#=Model.EntityName#>>(d => d.<#=Model.EntityName#>Id == id);
+        }
+    }
+}

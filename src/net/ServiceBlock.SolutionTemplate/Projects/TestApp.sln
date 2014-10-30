@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppServer", "AppServer", "{79780D70-0190-4F86-A649-F38D6842F6C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebClient", "WebClient", "{2E9F7AAB-AF73-4B63-8F75-7E9F65BBC678}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "TestApp\Domain\Domain.csproj", "{C595EFDE-A4D0-4FC6-884D-F80A014D1C84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataActivities", "TestApp\DataActivities\DataActivities.csproj", "{25AD98D5-63A6-44AC-9D2C-0D9D940CEE75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orchestrations", "TestApp\Orchestrations\Orchestrations.csproj", "{6001AA6A-ABC9-4568-AC65-F27D94540918}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "TestApp\WebApi\WebApi.csproj", "{A91A0854-DF6D-4AC4-93A3-7BBB0E5711BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "TestApp\WebUI\WebUI.csproj", "{C5E04AFF-D48E-4279-A92C-B9F58B48F3D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C595EFDE-A4D0-4FC6-884D-F80A014D1C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C595EFDE-A4D0-4FC6-884D-F80A014D1C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C595EFDE-A4D0-4FC6-884D-F80A014D1C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C595EFDE-A4D0-4FC6-884D-F80A014D1C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25AD98D5-63A6-44AC-9D2C-0D9D940CEE75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25AD98D5-63A6-44AC-9D2C-0D9D940CEE75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25AD98D5-63A6-44AC-9D2C-0D9D940CEE75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25AD98D5-63A6-44AC-9D2C-0D9D940CEE75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6001AA6A-ABC9-4568-AC65-F27D94540918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6001AA6A-ABC9-4568-AC65-F27D94540918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6001AA6A-ABC9-4568-AC65-F27D94540918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6001AA6A-ABC9-4568-AC65-F27D94540918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A91A0854-DF6D-4AC4-93A3-7BBB0E5711BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A91A0854-DF6D-4AC4-93A3-7BBB0E5711BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A91A0854-DF6D-4AC4-93A3-7BBB0E5711BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A91A0854-DF6D-4AC4-93A3-7BBB0E5711BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5E04AFF-D48E-4279-A92C-B9F58B48F3D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5E04AFF-D48E-4279-A92C-B9F58B48F3D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5E04AFF-D48E-4279-A92C-B9F58B48F3D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5E04AFF-D48E-4279-A92C-B9F58B48F3D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C595EFDE-A4D0-4FC6-884D-F80A014D1C84} = {79780D70-0190-4F86-A649-F38D6842F6C8}
+		{25AD98D5-63A6-44AC-9D2C-0D9D940CEE75} = {79780D70-0190-4F86-A649-F38D6842F6C8}
+		{6001AA6A-ABC9-4568-AC65-F27D94540918} = {79780D70-0190-4F86-A649-F38D6842F6C8}
+		{A91A0854-DF6D-4AC4-93A3-7BBB0E5711BF} = {79780D70-0190-4F86-A649-F38D6842F6C8}
+		{C5E04AFF-D48E-4279-A92C-B9F58B48F3D7} = {2E9F7AAB-AF73-4B63-8F75-7E9F65BBC678}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.1\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.Logging.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.WCF.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Validation.5.0.505.0\lib\NET35
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="ServiceBlock.SolutionTemplate..6b330fbe-8eee-460b-9f6d-6fd70bb01bde" Version="1.1" Language="en-US" Publisher="Muhammad Haroon" />
+    <DisplayName>ServiceBlock.SolutionTemplate</DisplayName>
+    <Description xml:space="preserve">Installs solution template for solutions based on ServiceBlock.</Description>
+    <License>License.txt</License>
+    <GettingStartedGuide>Readme.txt</GettingStartedGuide>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[12.0,)" />
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates" d:TargetPath="ProjectTemplates\Template.zip" />
+  </Assets>
+</PackageManifest>

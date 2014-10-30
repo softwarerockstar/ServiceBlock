@@ -1,0 +1,35 @@
+﻿<#@ template language="C#" hostspecific="False" #>
+<#@ output Extension="gen.cs" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter name="Model" type="ServiceBlock.Scaffolder.Models.CodeGenModel" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Activities;
+using ServiceBlock.Foundation;
+using ServiceBlock.Foundation.Activities;
+using ServiceBlock.Foundation.Data;
+using System.ComponentModel;
+using <#=Model.ModelNamespace#>;
+
+namespace <#=Model.DataActivityNamespace#>.<#=Model.EntityName#>
+{
+    public partial class GetAll : DataActivityBase<IList<<#=Model.ModelNamespace#>.<#=Model.EntityName#>>>
+    {
+        public InArgument<string> IncludeProperties { get; set; }
+
+        protected override void ExecuteActivity(NativeActivityContext context)
+        {
+            var dataContext = base.GetUnitOfWork<<#=Model.UoWInterfaceName#>>(context);
+            var includeProperties = IncludeProperties.Get(context);
+            var toReturn = dataContext.GetAll<<#=Model.ModelNamespace#>.<#=Model.EntityName#>>(includeProperties);
+
+            Result.Set(context, toReturn);
+        }
+    }
+}

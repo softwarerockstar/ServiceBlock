@@ -1,0 +1,55 @@
+﻿<#@ template language="C#" hostspecific="False" #>
+<#@ output Extension="gen.cs" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter name="Model" type="ServiceBlock.Scaffolder.Models.CodeGenModel" #>
+using System;
+using System.Activities;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
+using ServiceBlock.Foundation;
+using ServiceBlock.Foundation.Activities;
+using ServiceBlock.Foundation.Data;
+using <#=Model.ModelNamespace#>;
+
+namespace <#=Model.DataActivityNamespace#>.<#=Model.EntityName#>
+{
+    public partial class InsertOrUpdate : DataActivityBase<<#=Model.ModelNamespace#>.<#=Model.EntityName#>>
+    {
+        [RequiredArgument]
+        public InArgument<<#=Model.ModelNamespace#>.<#=Model.EntityName#>> Entity { get; set; }
+
+        protected override void ExecuteActivity(NativeActivityContext context)
+        {
+            var entity = Entity.Get(context);
+            var dataContext = base.GetUnitOfWork<<#=Model.UoWInterfaceName#>>(context);
+
+            <#=Model.ModelNamespace#>.<#=Model.EntityName#> toReturn;
+
+            if (entity.<#=Model.EntityName#>Id == 0)
+            { // Insert
+                toReturn = dataContext.Insert(entity);
+            }
+            else
+            { // Update
+                dataContext.Update<<#=Model.ModelNamespace#>.<#=Model.EntityName#>,dynamic>(
+                    u => u.<#=Model.EntityName#>Id == entity.<#=Model.EntityName#>Id,
+                    s => new
+                    {<# foreach (var prop in Model.NonKeyProperties.Union(Model.ForeignKeyProperties)) { #>  
+						<#= prop.Name #> = entity.<#= prop.Name #>,<#
+					}#>      
+				});
+
+                toReturn = entity;
+            }
+
+            Result.Set(context, entity);
+        }
+    }
+}

@@ -1,0 +1,50 @@
+﻿<#@ template language="C#" hostspecific="False" #>
+<#@ output Extension="gen.cs" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter name="Model" type="ServiceBlock.Scaffolder.Models.CodeGenModel" #>
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ServiceBlock.Foundation.DataProviders;
+
+namespace <#=Model.ModelNamespace#>
+{
+    public partial class <#=Model.UoWClassName#> : EntityFrameworkUnitOfWorkBase
+    {
+        static <#=Model.UoWClassName#>()
+        {
+            //TODO: this should only be enabled during local development / debugging.
+            //CAUTION: When model changes, this line will drop and recreate database anew deleting all data.
+
+            //Database.SetInitializer<<#=Model.EntityName#>>(new DropCreateDatabaseIfModelChanges<<#=Model.EntityName#>>());           
+        }
+
+        public <#=Model.UoWClassName#>()
+            : this("Name=<#=Model.ConnectionName#>")
+        {
+        }
+
+        public <#=Model.UoWClassName#>(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        {
+            // If lazy loading is enabled all related entities will are always loaded.
+            // We do not want this behavior.  In order to load related entities use LINQ
+            // "Include" method when needed.
+            this.Configuration.LazyLoadingEnabled = false;
+			this.Configuration.ProxyCreationEnabled = false;
+        }
+
+<# foreach (var item in Model.DomainClasses) { #>
+		public IDbSet<<#=item.Key#>> <#=item.Value#> { get; set; }
+<#}#>
+
+    }
+}
+

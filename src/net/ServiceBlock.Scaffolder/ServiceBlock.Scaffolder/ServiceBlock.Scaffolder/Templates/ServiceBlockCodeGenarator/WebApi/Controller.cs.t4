@@ -1,0 +1,105 @@
+﻿<#@ template language="C#" hostspecific="False" #>
+<#@ output Extension="gen.cs" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter name="Model" type="ServiceBlock.Scaffolder.Models.CodeGenModel" #>
+using <#=Model.MessagesNamespace#>.<#=Model.EntityName#>;
+using System.Collections.Generic;
+using System.Web;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using ServiceBlock.Foundation;
+using ServiceBlock.Foundation.WebApi;
+using ServiceBlock.Foundation.Orchestrations;
+
+namespace <#=Model.WebApiControllerNamespace#>
+{
+    [RoutePrefix("api/<#=Model.EntityName#>")]    
+    public class <#=Model.EntityName#>Controller : ApiControllerBase
+    {
+        [Route("", Name="<#=Model.EntityName#>.GetAll")]
+        public IHttpActionResult Get()
+        {
+            var request = new <#=Model.EntityName#>GetAllRequest();
+
+            var executor = OrchestrationExecutorFactory
+                .CreateExecutor<<#=Model.EntityName#>GetAllRequest, <#=Model.EntityName#>GetAllResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "GetAll");
+            
+            return Ok<<#=Model.EntityName#>GetAllResponse>(executor.Execute(request));
+        }
+
+        [Route("ByCriteria", Name="<#=Model.EntityName#>.GetWithCriteria")]
+        public IHttpActionResult Get(
+            int pageNumber = 1,
+            int pageSize = 20,
+            string filterFieldName = null,
+            string filterFieldValue = null,
+            string sortFieldName = null,
+            string sortDirection = null)
+        {
+            var request = new <#=Model.EntityName#>GetWithCriteriaRequest
+            {
+                Criteria =
+                    Criteria.FromQueryString(HttpContext.Current.Request.QueryString, "<#=Model.EntityName#>Id")
+            };
+
+            var executor = OrchestrationExecutorFactory
+                .CreateExecutor<<#=Model.EntityName#>GetWithCriteriaRequest, <#=Model.EntityName#>GetWithCriteriaResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "GetWithCriteria");
+
+            return Ok<<#=Model.EntityName#>GetWithCriteriaResponse>(executor.Execute(request));
+        }
+
+        [Route("{id:int}", Name="<#=Model.EntityName#>.GetById")]
+        public IHttpActionResult Get(int id)
+        {
+            var request = new <#=Model.EntityName#>GetByIdRequest { Id = id };
+
+            var executor = OrchestrationExecutorFactory
+                .CreateExecutor<<#=Model.EntityName#>GetByIdRequest, <#=Model.EntityName#>GetByIdResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "GetById");
+            
+            return Ok<<#=Model.EntityName#>GetByIdResponse>(executor.Execute(request));
+        }
+
+        [Route("{id:int}", Name="<#=Model.EntityName#>.Delete")]
+        public IHttpActionResult Delete(int id)
+        {
+            var request = new <#=Model.EntityName#>DeleteRequest { IdList = new List<int> {id} };
+
+            var executor = OrchestrationExecutorFactory
+                .CreateExecutor<<#=Model.EntityName#>DeleteRequest, <#=Model.EntityName#>DeleteResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "Delete");
+
+            return Ok<<#=Model.EntityName#>DeleteResponse>(executor.Execute(request));
+
+        }
+
+        [Route("", Name="<#=Model.EntityName#>.Insert")]
+        public IHttpActionResult Put([FromBody]<#=Model.EntityName#>AddOrUpdateRequest request)
+        {
+            foreach (var entity in request.Entities)
+                entity.<#=Model.EntityName#>Id = 0;
+
+            var executor = OrchestrationExecutorFactory
+                .CreateExecutor<<#=Model.EntityName#>AddOrUpdateRequest, <#=Model.EntityName#>AddOrUpdateResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "AddOrUpdate");
+
+            return Ok<<#=Model.EntityName#>AddOrUpdateResponse>(executor.Execute(request, true));
+        }
+
+        [Route("", Name="<#=Model.EntityName#>.Update")]
+        public IHttpActionResult Post([FromBody]<#=Model.EntityName#>AddOrUpdateRequest request)
+        {
+            var executor = OrchestrationExecutorFactory
+                .CreateExecutor<<#=Model.EntityName#>AddOrUpdateRequest, <#=Model.EntityName#>AddOrUpdateResponse>
+                (entityName: "<#=Model.EntityName#>", operationName: "AddOrUpdate");
+
+            return Ok<<#=Model.EntityName#>AddOrUpdateResponse>(executor.Execute(request, true));
+        } 
+    }
+}
