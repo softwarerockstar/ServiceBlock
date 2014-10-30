@@ -17,7 +17,7 @@ namespace ServiceBlock.Foundation.DataProviders
 {
     public abstract class CassandraUnitOfWorkBase : IUnitOfWorkEx, IDisposable
     {
-        private Session _session;
+        private ISession _session;
         private int _batchCount;
         private Batch _batch;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Objects;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -146,7 +146,7 @@ namespace ServiceBlock.Foundation.DataProviders
                 foreach (var entityToUpdate in entitiesToUpdate)
                 {
                     var entity = CopyProperties(upatedFields, entityToUpdate);
-                    base.Entry(entity).State = System.Data.EntityState.Modified;
+                    base.Entry(entity).State = EntityState.Modified;
                 }
             }
         }
